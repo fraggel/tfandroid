@@ -108,7 +108,7 @@ public class AdminServlet extends HttpServlet {
 						if(request.getParameter("crear")!=null){
 							aDao.crearNoticia(request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
 						}else if(request.getParameter("modificar")!=null){
-							aDao.modificarNoticia(Integer.parseInt(request.getParameter("idnoticia")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
+							aDao.modificarNoticia(Integer.parseInt(request.getParameter("idnoticia")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),request.getParameter("fecha"));
 						}else if(request.getParameter("borrar")!=null){
 							aDao.borrarNoticia(request.getParameter("idnoticia"),request.getParameter("idioma"));
 						}

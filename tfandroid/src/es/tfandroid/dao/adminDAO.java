@@ -48,7 +48,7 @@ public class adminDAO {
 		}
 		return true;
 	}
-	public boolean modificarNoticia(int idnoticia,String titulo,String descripcion,String urlImagen,String idioma,boolean visible){
+	public boolean modificarNoticia(int idnoticia,String titulo,String descripcion,String urlImagen,String idioma,boolean visible,String fecha){
 		ArrayList listaNoticias=null;
 		Connection conn =null;
 		try {
@@ -56,14 +56,15 @@ public class adminDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-            CallableStatement calstm=conn.prepareCall("update noticias set titulo=?,descripcion=?,urlimagen=?,idioma=?,visible=? where idnoticia=? and idioma=?");
+            CallableStatement calstm=conn.prepareCall("update noticias set titulo=?,descripcion=?,urlimagen=?,idioma=?,visible=?,fecha=? where idnoticia=? and idioma=?");
 			calstm.setString(1, titulo);
 			calstm.setString(2, descripcion);
 			calstm.setString(3, urlImagen);
 			calstm.setString(4, idioma);
 			calstm.setBoolean(5, visible);
-			calstm.setInt(6, idnoticia);
-			calstm.setString(7, idioma);
+			calstm.setTimestamp(6, Timestamp.valueOf(fecha));
+			calstm.setInt(7, idnoticia);
+			calstm.setString(8, idioma);
 			calstm.executeUpdate();
 			conn.close();
 		} catch (Exception e) {

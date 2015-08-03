@@ -47,7 +47,7 @@ Elige idioma:<select name="language">
 	News noticia=(News)reqHelper.getListaNews().get(x);	
 	noticia.getClass();
 %>
-<form action="AdminServlet" method="post"><input type="hidden" name="action" value="2"/><input type="hidden" name="idioma" value="<%=noticia.getIdioma()%>"/><input type="hidden" name="idnoticia" value="<%=noticia.getIdnoticia()%>"/><img width="100px" src="<%=noticia.getUrl()%>"/><br/><input type="text" name="titulo" value="<%=noticia.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=noticia.getUrl()%>" size="50"/><br/><input type="text" name="visible" value="<%=noticia.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=noticia.getDescipcion() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
+<form action="AdminServlet" method="post"><input type="hidden" name="action" value="2"/><input type="hidden" name="idioma" value="<%=noticia.getIdioma()%>"/><input type="hidden" name="idnoticia" value="<%=noticia.getIdnoticia()%>"/><img width="100px" src="<%=noticia.getUrl()%>"/><br/><input type="text" name="fecha" value="<%=noticia.getFecha()%>"/><input type="text" name="titulo" value="<%=noticia.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=noticia.getUrl()%>" size="50"/><br/><input type="text" name="visible" value="<%=noticia.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=noticia.getDescipcion() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
 <br/><hr/>
 <% }%>
 
