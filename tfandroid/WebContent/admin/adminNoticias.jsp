@@ -16,29 +16,29 @@ if(session.getAttribute("admin")!=null){
 %>
 
 <%if(reqHelper.getAction()==2){ %>
-Crear Noticia</br>
+Crear Noticia<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="2"/>
 <input type="hidden" name="subaction" value="1"/>
-Titulo:<input type="text" name="titulo"/></br>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea></br>
-Url Imagen:<input type="text" name="urlimagen"/></br>
+Titulo:<input type="text" name="titulo"/><br/>
+Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
+Url Imagen:<input type="text" name="urlimagen"/><br/>
 Idioma:<select name="idioma">
 <option selected value="es">Español</option>
 <option value="en">Ingles</option>
-</select></br>
+</select><br/>
 Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>
-</select></br></br>
-<input type="submit"/></br>
+</select><br/><br/>
+<input type="submit"/><br/>
 </form>
-</br></br></br>
+<br/><br/><br/>
 <form action="AdminServlet" method="post">
 Elige idioma:<select name="language">
 <option selected value="es">Español</option>
 <option value="en">Ingles</option>
-</select></br>
+</select><br/>
 <input type="submit" name="CambiaIdioma" value="Cambiar idioma"/>
 <input type="hidden" name="action" value="2"/>
 </form>
@@ -47,11 +47,11 @@ Elige idioma:<select name="language">
 	News noticia=(News)reqHelper.getListaNews().get(x);	
 	noticia.getClass();
 %>
-<form action="AdminServlet" method="post"><input type="hidden" name="action" value="2"/><input type="hidden" name="idioma" value="<%=noticia.getIdioma()%>"/><input type="hidden" name="idnoticia" value="<%=noticia.getIdnoticia()%>"/><img width="100px" src="<%=noticia.getUrl()%>"/></br><input type="text" name="titulo" value="<%=noticia.getTitulo()%>"/></br><input type="text" name="urlimagen" value="<%=noticia.getUrl()%>" size="50"/></br><input type="text" name="visible" value="<%=noticia.isVisible()%>"/></br><textarea name="descripcion" rows="30" cols="100"><%=noticia.getDescipcion() %></textarea></br><input type="submit" name="modificar" value="modificar"/></br><input type="submit" name="borrar" value="borrar"/></br></form>
-</br><hr/>
+<form action="AdminServlet" method="post"><input type="hidden" name="action" value="2"/><input type="hidden" name="idioma" value="<%=noticia.getIdioma()%>"/><input type="hidden" name="idnoticia" value="<%=noticia.getIdnoticia()%>"/><img width="100px" src="<%=noticia.getUrl()%>"/><br/><input type="text" name="titulo" value="<%=noticia.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=noticia.getUrl()%>" size="50"/><br/><input type="text" name="visible" value="<%=noticia.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=noticia.getDescipcion() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
+<br/><hr/>
 <% }%>
 
-</br></br></br></br></br></br>
+<br/><br/><br/><br/><br/><br/>
 
 <%}%>
 

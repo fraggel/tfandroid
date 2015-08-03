@@ -36,7 +36,7 @@ if(reqHelper.getTipoDevice()!=null){
 <div id="leftsection"><div id="topsection"><div id="logo"><div class="innertube">
 	<a href=""><img id="logoweb" /></a>
 	<div id="banner">
-		<a href="" target="_blank"><img id="bannerweb" />
+		<a href="" target="_blank"><img id="bannerweb" /></a>
 	</div>
 	<div id="languagesearchsocial">
 		<form method="post" action="AdminServlet">

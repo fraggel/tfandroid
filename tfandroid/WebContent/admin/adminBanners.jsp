@@ -17,24 +17,24 @@ if(session.getAttribute("admin")!=null){
 
 
 <%if(reqHelper.getAction()==3){ %>
-Crear Banner</br>
+Crear Banner<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="3"/>
 <input type="hidden" name="subaction" value="1"/>
-Titulo:<input type="text" name="titulo"/></br>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea></br>
-Url Imagen:<input type="text" name="urlimagen"/></br>
+Titulo:<input type="text" name="titulo"/><br/>
+Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
+Url Imagen:<input type="text" name="urlimagen"/><br/>
 Idioma:<select name="idioma">
 <option selected value="es">Español</option>
 <option value="en">Ingles</option>
-</select></br>
+</select><br/>
 Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>
-</select></br></br>
-<input type="submit"/></br>
+</select><br/><br/>
+<input type="submit"/><br/>
 </form>
-</br></br></br></br></br></br>
+<br/><br/><br/><br/><br/><br/>
 <%}%>
 <%} %>
 </div>

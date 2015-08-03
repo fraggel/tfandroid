@@ -15,7 +15,7 @@
 if(session.getAttribute("admin")!=null){
 %>
 <%if(reqHelper.getAction()==4){ %>
-Crear descarga</br>
+Crear descarga<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="4"/>
 <input type="hidden" name="subaction" value="1"/>
@@ -28,7 +28,7 @@ for (int x=0;x<reqHelper.getListaMarcas().size();x++){
 <option value="<%=marca.getIdmarca()%>"><%=marca.getTitulo() %></option>
 <%}
 }%>
-</select></br>
+</select><br/>
 Modelo:<select name="idmodelo">
 <%
 if(reqHelper.getListaModelos()!=null){
@@ -38,32 +38,53 @@ for (int x=0;x<reqHelper.getListaModelos().size();x++){
 <option value="<%=modelo.getIdmodelo()%>"><%=modelo.getTitulo() %></option>
 <%}
 }%>
-</select></br>
-Titulo:<input type="text" name="titulo"/></br>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea></br>
-Url Imagen:<input type="text" name="urlimagen"/></br>
+</select><br/>
+Titulo:<input type="text" name="titulo"/><br/>
+Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
+Url Imagen:<input type="text" name="urlimagen"/><br/>
 Idioma:<select name="idioma">
 <option selected value="es">Español</option>
 <option value="en">Ingles</option>
-</select></br>
+</select><br/>
 Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>
-</select></br></br>
-<input type="submit" name="crear" value="Crear"/></br>
+</select><br/><br/>
+<input type="submit" name="crear" value="Crear"/><br/>
 </form>
-</br></br></br>
+<br/><br/><br/>
 <form action="AdminServlet" method="post">
+Elige Marca:<select name="idmarca">
+<%
+if(reqHelper.getListaMarcas()!=null){
+for (int x=0;x<reqHelper.getListaMarcas().size();x++){
+	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
+%>
+<option value="<%=marca.getIdmarca()%>"><%=marca.getTitulo() %></option>
+<%}
+}%>
+</select><br/>
+Elige Modelo:<select name="idmodelo">
+<%
+if(reqHelper.getListaModelos()!=null){
+for (int x=0;x<reqHelper.getListaModelos().size();x++){
+	Modelo modelo=(Modelo)reqHelper.getListaModelos().get(x);	
+%>
+<option value="<%=modelo.getIdmodelo()%>"><%=modelo.getTitulo() %></option>
+<%}
+}%>
+</select><br/>
 Elige idioma:<select name="language">
 <option selected value="es">Español</option>
 <option value="en">Ingles</option>
-</select></br>
-<input type="submit" name="CambiaIdioma" value="Cambiar idioma"/>
+</select><br/>
+<input type="submit" name="CambiaIdioma" value="Consultar"/>
 <input type="hidden" name="action" value="4"/>
 </form>
-</br></br></br></br></br></br>
+<br/><br/><br/><br/><br/><br/>
 
-<%for (int x=0;x<reqHelper.getListaDescargas().size();x++){
+<%if(reqHelper.getListaDescargas()!=null){
+	for (int x=0;x<reqHelper.getListaDescargas().size();x++){
 	Download descarga=(Download)reqHelper.getListaDescargas().get(x);	
 	descarga.getClass();
 %>
@@ -78,7 +99,7 @@ for (int xx=0;xx<reqHelper.getListaMarcas().size();xx++){
 <%}
 	}
 }%>
-</br>
+<br/>
 Modelo:
 <%
 if(reqHelper.getListaModelos()!=null){
@@ -90,14 +111,16 @@ for (int xxx=0;xxx<reqHelper.getListaModelos().size();xxx++){
 <%}
 }
 }%>
-</br>
-<form action="AdminServlet" method="post"><input type="hidden" name="action" value="4"/><input type="hidden" name="iddownload" value="<%=descarga.getIddescarga()%>"/><input type="hidden" name="idmarca" value="<%=descarga.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=descarga.getIdmodelo()%>"/><img width="100px" src="<%=descarga.getUrlimagen()%>"/></br><input type="text" name="idioma" value="<%=descarga.getIdioma()%>"/></br><input type="text" name="titulo" value="<%=descarga.getTitulo()%>"/></br><input type="text" name="urlimagen" value="<%=descarga.getUrlimagen()%>" size="50"/></br><input type="text" name="visible" value="<%=descarga.isVisible()%>"/></br><textarea name="descripcion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea></br><input type="submit" name="modificar" value="modificar"/></br><input type="submit" name="borrar" value="borrar"/></br></form>
-</br><hr/>
-<% }%>
+<br/>
+<form action="AdminServlet" method="post"><input type="hidden" name="action" value="4"/><input type="hidden" name="iddownload" value="<%=descarga.getIddescarga()%>"/><input type="hidden" name="idmarca" value="<%=descarga.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=descarga.getIdmodelo()%>"/><img width="100px" src="<%=descarga.getUrlimagen()%>"/><br/><input type="text" name="fecha" value="<%=descarga.getFecha()%>"/><input type="text" name="idioma" value="<%=descarga.getIdioma()%>"/><br/><input type="text" name="titulo" value="<%=descarga.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=descarga.getUrlimagen()%>" size="50"/><br/><input type="text" name="visible" value="<%=descarga.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
+<br/><hr/>
+<%
+}
+}%>
 <%	
 }
 %>
-<iframe src="http://www.quackit.com/html/online-html-editor/full/" width="100%" height="1000px"></iframe></br>
+<iframe src="http://www.quackit.com/html/online-html-editor/full/" width="100%" height="1000px"></iframe><br/>
 <iframe src="http://www.garyshood.com/htmltobb/" width="100%" height="1000px"></iframe>
 <div id="plantilla">
 Plantilla Descarga Español:<br/>
@@ -152,7 +175,7 @@ Puedes descargarlo desde los siguientes servidores:<br/>
 <br/><br/>
 <center><img width="60%" src="http://www.tfandroid.es/images/downloads/visituses.png"/></center><br/>
 <a href="www.tfandroid.es"><img src="http://www.tfandroid.es/images/logonuevo.png" width="100px"/></a>
-<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="100px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="100px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="100px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="100px"/></a></br></br>
+<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="100px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="100px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="100px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="100px"/></a><br/><br/>
 <center><img width="60%" src="http://www.tfandroid.es/images/downloads/creditses.png"/></center><br/><br/>
 CREDITOS<br/>
 
@@ -217,7 +240,7 @@ Puedes descargarlo desde los siguientes servidores:<br/>
 <br/><br/>
 <center><img width="60%" src="http://www.tfandroid.es/images/downloads/visitusen.png"/></center><br/>
 <a href="www.tfandroid.es"><img src="http://www.tfandroid.es/images/logonuevo.png"/></a>
-<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="140px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="140px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="140px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="140px"/></a></br></br>
+<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="140px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="140px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="140px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="140px"/></a><br/><br/>
 <center><img width="60%" src="http://www.tfandroid.es/images/downloads/creditsen.png"/></center><br/><br/>
 CREDITOS<br/>
 

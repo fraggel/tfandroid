@@ -3,7 +3,7 @@
 <%@include file="right.jsp" %>
 <div id="contentwrapper">
 <div id="contentcolumn">
-<div class="innertube">Bienvenido a TF Android Developers:</br>
+<div class="innertube">Bienvenido a TF Android Developers:<br/>
 En <b>TF Android Developers</b>, somos un grupo de entusiastas Android unidos para ofrecerte todo nuestro conocimiento y trabajo centrado en la optimización y creación de ROMS basadas en Android.
 Lo que podemos ofrecerte es una gran cantidad y calidad de ROMS realizadas y probadas minuciosamente intentado pulir los detalles que marcan la diferencia.
 También encontrarás videos, reviews, tutoriales para hacerte lo más sencillo posible los procesos de instalación y actualización así como poder resolver las dudas que puedas tener.

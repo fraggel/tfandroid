@@ -4,7 +4,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -132,7 +134,7 @@ public class adminDAO {
 		}
 		return true;
 	}
-	public boolean modificarDescarga(String idmarca,String idmodelo,String titulo, String descripcion, String urlimagen,String idioma, String visible,String iddownload) {
+	public boolean modificarDescarga(String idmarca,String idmodelo,String titulo, String descripcion, String urlimagen,String idioma, String visible,String iddownload,String fecha) {
 		ArrayList listaNoticias=null;
 		Connection conn =null;
 		boolean ret=true;
@@ -140,16 +142,17 @@ public class adminDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("update downloads set titulo= ?,urlimagen=?,descripcion=?,idioma=?,visible=? where idmarca=? and idmodelo=? and idioma=? and iddownload=?");
+            CallableStatement calstm=conn.prepareCall("update downloads set titulo= ?,urlimagen=?,descripcion=?,idioma=?,visible=?,fecha=? where idmarca=? and idmodelo=? and idioma=? and iddownload=?");
 			calstm.setString(1, titulo);
 			calstm.setString(2, urlimagen);
 			calstm.setString(3, descripcion);
 			calstm.setString(4, idioma);
 			calstm.setBoolean(5, Boolean.parseBoolean(visible));
-			calstm.setInt(6, Integer.parseInt(idmarca));
-			calstm.setInt(7, Integer.parseInt(idmodelo));
-			calstm.setString(8, idioma);
-			calstm.setInt(9, Integer.parseInt(iddownload));
+			calstm.setTimestamp(6, Timestamp.valueOf(fecha));
+			calstm.setInt(7, Integer.parseInt(idmarca));
+			calstm.setInt(8, Integer.parseInt(idmodelo));
+			calstm.setString(9, idioma);
+			calstm.setInt(10, Integer.parseInt(iddownload));
 			calstm.executeUpdate();
 			
 			conn.close();

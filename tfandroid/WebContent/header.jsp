@@ -46,7 +46,7 @@ if(reqHelper.getTipoDevice()!=null){
 		<div id="leftsection"><div id="topsection"><div id="logo"><div class="innertube">
 	<a href=""><img id="logoweb" /></a>
 	<div id="banner">
-		<a href="" target="_blank"><img id="bannerweb" />
+		<a href="" target="_blank"><img id="bannerweb" /></a>
 	</div>
 		
 </div>
@@ -55,10 +55,10 @@ if(reqHelper.getTipoDevice()!=null){
 </div>
 <div id="languagesearchsocialMobile">
 <form method="post" action="ControlServlet">
-		<a href="ControlServlet?language=es" ><img src="http://www.tfandroid.es/images/EspanaBanderaIcono.png" width="140px"/></a><a href="ControlServlet?language=en"><img src="http://www.tfandroid.es/images/ReinoUnidoBanderaIcono.png" width="140px"/></a></br> </br>  
+		<a href="ControlServlet?language=es" ><img src="http://www.tfandroid.es/images/EspanaBanderaIcono.png" width="140px"/></a><a href="ControlServlet?language=en"><img src="http://www.tfandroid.es/images/ReinoUnidoBanderaIcono.png" width="140px"/></a><br/> <br/>  
 		<input type="hidden" name="action" value="20"/>
-			<input type="text" name="textSearch" size="25" style="font-size:32pt;"/><input type="submit" name="Buscar" value="<%=RB.getString("home.search") %>" style="font-size:32pt"/></br></br> 
-			<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="140px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="140px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="140px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="140px"/></a></br></br> 
+			<input type="text" name="textSearch" size="25" style="font-size:32pt;"/><input type="submit" name="Buscar" value="<%=RB.getString("home.search") %>" style="font-size:32pt"/><br/><br/> 
+			<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="140px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="140px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="140px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="140px"/></a><br/><br/> 
 		</form> 
 </div>
 <%		
@@ -68,7 +68,7 @@ if(reqHelper.getTipoDevice()!=null){
 <div id="leftsection"><div id="topsection"><div id="logo"><div class="innertube">
 	<a href=""><img id="logoweb" /></a>
 	<div id="banner">
-		<a href="" target="_blank"><img id="bannerweb" />
+		<a href="" target="_blank"><img id="bannerweb" /></a>
 	</div>
 	<div id="languagesearchsocial">
 		<form method="post" action="ControlServlet">
@@ -118,7 +118,7 @@ if(reqHelper.getTipoDevice()!=null){
 		Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
 		marca.getClass();
 		%>
-		<li><a href='ControlServlet?action=2&subaction=<%=marca.getIdmarca() %>'><img width="90%" src="<%=marca.getUrlImagen()%>"/></br><%=marca.getTitulo()%></a></li>
+		<li><a href='ControlServlet?action=2&subaction=<%=marca.getIdmarca() %>'><img width="90%" src="<%=marca.getUrlImagen()%>"/><br/><%=marca.getTitulo()%></a></li>
 <% }%>
       		 		 		 
       </ul>

@@ -4,7 +4,7 @@
 <div id="contentwrapper">
 <div id="contentcolumn">
 <div class="innertube">
-<b><%=RB.getString("menu.downloads") %>:<br/><a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>&subDetalle=<%=reqHelper.getSubDetalle()%>"><%=RB.getString("home.back") %></a></b></br></br></br>
+<b><%=RB.getString("menu.downloads") %>:<br/><a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>&subDetalle=<%=reqHelper.getSubDetalle()%>"><%=RB.getString("home.back") %></a></b><br/><br/><br/>
 <div id="download">
 <%Download download=(Download)reqHelper.getDescargaActual();%>
 <%=download.getDescripcion() %>

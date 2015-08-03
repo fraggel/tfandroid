@@ -131,13 +131,15 @@ public class AdminServlet extends HttpServlet {
 						if(request.getParameter("crear")!=null){
 							aDao.crearDescarga(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
 						}else if(request.getParameter("modificar")!=null){
-							aDao.modificarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),request.getParameter("visible"),request.getParameter("iddownload"));
+							aDao.modificarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),request.getParameter("visible"),request.getParameter("iddownload"),request.getParameter("fecha"));
 						}else if(request.getParameter("borrar")!=null){
 							aDao.borrarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("iddownload"),request.getParameter("idioma"));
 						}
 						reqHelper.setListaMarcas(aDao.consultaMarcas());
 						reqHelper.setListaModelos(aDao.consultaModelos());
-						reqHelper.setListaDescargas(aDao.consultaDescargas());
+						if(request.getParameter("idmarca")!=null && request.getParameter("idmodelo")!=null){
+							reqHelper.setListaDescargas(aDao.consultaDescargas(reqHelper.getLang(),Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo"))));
+						}
 						reqHelper.setJsp("admin/adminDownloads.jsp");
 						break;
 					default:
@@ -150,6 +152,7 @@ public class AdminServlet extends HttpServlet {
 					RequestDispatcher rqDis=request.getRequestDispatcher(reqHelper.getJsp());
 					rqDis.forward(request, response);
 				}catch(Exception e){
+					e.printStackTrace();
 				}
 						
 			}
