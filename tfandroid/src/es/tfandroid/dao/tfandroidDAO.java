@@ -35,7 +35,7 @@ public class tfandroidDAO {
 				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7));
 				listaNoticias.add(noticia);
 				cont++;
-				if(cont==4){
+				if(cont==5){
 					break;
 				}
 			}
