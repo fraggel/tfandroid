@@ -45,7 +45,8 @@ Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
 	Modelo modelo=(Modelo)reqHelper.getListaModelos().get(x);	
 	modelo.getClass();
 %>
-<form><input type="hidden" name="idmarca" value="<%=modelo.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/><img width="100px" src="<%=modelo.getUrlImagen()%>"/><br/><input type="text" name="titulo" value="<%=modelo.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=modelo.getUrlImagen()%>" size="50"/><br/><textarea name="descripcion" rows="30" cols="100"><%=modelo.getDescripcion() %></textarea><br/><input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/></form>
+<form action="AdminServlet" method="post">
+<input type="hidden" name="action" value="1"/>><input type="hidden" name="idmarca" value="<%=modelo.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/><img width="100px" src="<%=modelo.getUrlImagen()%>"/><br/><input type="text" name="titulo" value="<%=modelo.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=modelo.getUrlImagen()%>" size="50"/><br/><textarea name="descripcion" rows="30" cols="100"><%=modelo.getDescripcion() %></textarea><br/><input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/></form>
 <br/><hr/>
 <% }%>
 

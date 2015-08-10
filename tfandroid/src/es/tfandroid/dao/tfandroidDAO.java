@@ -151,9 +151,6 @@ public class tfandroidDAO {
 				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getBoolean(6));
 				listaModelos.add(modelo);
 				cont++;
-				if(cont==4){
-					break;
-				}
 			}
 			conn.close();
 		} catch (Exception e) {
@@ -184,9 +181,6 @@ public class tfandroidDAO {
 				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getBoolean(6));
 				listaModelos.add(modelo);
 				cont++;
-				if(cont==4){
-					break;
-				}
 			}
 			conn.close();
 		} catch (Exception e) {
