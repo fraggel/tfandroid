@@ -1,18 +1,39 @@
 <%@include file="header.jsp" %>
-<%@include file="left.jsp" %>
 <%@include file="right.jsp" %>
-<div id="contentwrapper">
-<div id="contentcolumn">
-<div class="innertube">
 <b><%=RB.getString("menu.downloads") %><br/><a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>"><%=RB.getString("home.back") %></a></b><br/><br/><br/>
 <%for (int x=0;x<reqHelper.getListaDescargas().size();x++){
 	Download download=(Download)reqHelper.getListaDescargas().get(x);	
 %>
-<center><div id="download"><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>"><%=download.getFecha()%><br/><img src="<%=download.getUrlimagen()%>"/><br/><%=download.getTitulo()%><br/><%=RB.getString("home.showdetails") %></a></div></center>
-<br/><br/>
+<div id="tableDesc">
+<b><%=download.getTitulo()%> <%=download.getFecha()%></b>
+	<table id="downloads" border="0">
+	
+<tr>
+<td id="tableDescTD1"><img src="http://www.tfandroid.es/images/arribaInfo.png" /><br/>
+<%=download.getIdmarca()%>
+</td>
+
+	<td><div id="tableDescDivImg"><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>">
+	<img src="<%=download.getUrlimagen()%>"/></a></div></td>
+	</tr>
+
+	<tr>
+	<td colspan="2">
+<img src="http://www.tfandroid.es/images/arribaFeatures.png" width="100%" height="30px"/>
+	<ul style="margin-left:50px;margin-top:10px;">
+<%=download.getIdmarca()%>
+</ul>
+</td>
+	</tr>
+	<tr>
+	<td colspan="2"><center><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>">
+	<%=RB.getString("home.showdetails") %></a><center></td>
+	</tr>
+	</table>
+</div>
+	<br/><br/><hr/><br/><br/>
+
+
 <% }%>
-</div>
-</div>
-</div>
 
 <%@include file="footer.jsp" %>

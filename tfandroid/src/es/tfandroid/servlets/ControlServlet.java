@@ -66,9 +66,10 @@ public class ControlServlet extends HttpServlet {
 			switch(reqHelper.getAction()){
 			case 0:
 
-				reqHelper.setListaNewsCortas(tDao.consultaNoticiasCortas(reqHelper.getLang()));
+				/*reqHelper.setListaNewsCortas(tDao.consultaNoticiasCortas(reqHelper.getLang()));
 				reqHelper.setListaMarcas(tDao.consultaMarcas());
-				reqHelper.setJsp("promotions.jsp");
+				reqHelper.setJsp("promotions.jsp");*/
+				reqHelper.setJsp("index.jsp");
 				break;
 			case 1:
 
@@ -82,13 +83,16 @@ public class ControlServlet extends HttpServlet {
 				reqHelper.setListaMarcas(tDao.consultaMarcas());
 				for(int x =0;x<reqHelper.getListaMarcas().size();x++){
 					Marca n=(Marca)reqHelper.getListaMarcas().get(x);
-					if(reqHelper.getSubaction() == n.getIdmarca()){
+					if(reqHelper.getDetalle() == n.getIdmarca()){
 						reqHelper.setCompanyActual(n);
+						reqHelper.setJsp("company.jsp");
 						break;
+					}else{
+						reqHelper.setJsp("companyLista.jsp");
 					}
 				}
 				
-				reqHelper.setJsp("company.jsp");
+				
 				break;
 			case 3:
 				reqHelper.setListaMarcas(tDao.consultaMarcas());
