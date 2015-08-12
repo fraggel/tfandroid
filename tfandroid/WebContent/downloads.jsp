@@ -27,7 +27,7 @@
 	</tr>
 	<tr>
 	<td colspan="2"><center><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>">
-	<%=RB.getString("home.showdetails") %></a><center></td>
+	<div id="boldTable"><%=RB.getString("home.showdetails") %></div></a><center></td>
 	</tr>
 	</table>
 </div>
