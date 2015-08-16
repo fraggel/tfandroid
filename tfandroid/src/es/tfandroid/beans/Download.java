@@ -11,13 +11,15 @@ String titulo;
 String descripcion;
 String urlimagen;
 String idioma;
+String info;
+String features;
 boolean visible;
 
 
 
 public Download(int iddescarga, int idmarca, int idmodelo, Timestamp fecha,
 		String titulo, String descripcion, String urlimagen, String idioma,
-		boolean visible) {
+		boolean visible,String info,String features) {
 	super();
 	this.iddescarga = iddescarga;
 	this.idmarca = idmarca;
@@ -28,7 +30,26 @@ public Download(int iddescarga, int idmarca, int idmodelo, Timestamp fecha,
 	this.urlimagen = urlimagen;
 	this.idioma = idioma;
 	this.visible = visible;
+	this.info=info;
+	this.features=features;
 }
+
+public String getInfo() {
+	return info;
+}
+
+public void setInfo(String info) {
+	this.info = info;
+}
+
+public String getFeatures() {
+	return features;
+}
+
+public void setFeatures(String features) {
+	this.features = features;
+}
+
 public int getIddescarga() {
 	return iddescarga;
 }

@@ -9,8 +9,8 @@
 	<table id="downloads" border="0">
 	
 <tr>
-<td id="tableDescTD1"><img src="http://www.tfandroid.es/images/arribaInfo.png" /><br/>
-<%=download.getIdmarca()%>
+<td id="tableDescTD1"><img src="http://www.tfandroid.es/images/<%=RB.getString("img.arribaInfo") %>" /><br/>
+<%=download.getInfo()%>
 </td>
 
 	<td><div id="tableDescDivImg"><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>">
@@ -19,9 +19,9 @@
 
 	<tr>
 	<td colspan="2">
-<img src="http://www.tfandroid.es/images/arribaFeatures.png" width="100%" height="30px"/>
+<img src="http://www.tfandroid.es/images/<%=RB.getString("img.arribaFeat") %>"/>
 	<ul style="margin-left:50px;margin-top:10px;">
-<%=download.getIdmarca()%>
+<%=download.getFeatures()%>
 </ul>
 </td>
 	</tr>

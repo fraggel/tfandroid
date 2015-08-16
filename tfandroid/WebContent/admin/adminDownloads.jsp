@@ -41,6 +41,8 @@ for (int x=0;x<reqHelper.getListaModelos().size();x++){
 </select><br/>
 Titulo:<input type="text" name="titulo"/><br/>
 Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
+Rom Info:<textarea name="info" rows="30" cols="100"></textarea><br/>
+Rom Features:<textarea name="features" rows="30" cols="100"></textarea><br/>
 Url Imagen:<input type="text" name="urlimagen"/><br/>
 Idioma:<select name="idioma">
 <option selected value="es">Español</option>
@@ -112,7 +114,7 @@ for (int xxx=0;xxx<reqHelper.getListaModelos().size();xxx++){
 }
 }%>
 <br/>
-<form action="AdminServlet" method="post"><input type="hidden" name="action" value="4"/><input type="hidden" name="iddownload" value="<%=descarga.getIddescarga()%>"/><input type="hidden" name="idmarca" value="<%=descarga.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=descarga.getIdmodelo()%>"/><img width="100px" src="<%=descarga.getUrlimagen()%>"/><br/><input type="text" name="fecha" value="<%=descarga.getFecha()%>"/><input type="text" name="idioma" value="<%=descarga.getIdioma()%>"/><br/><input type="text" name="titulo" value="<%=descarga.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=descarga.getUrlimagen()%>" size="50"/><br/><input type="text" name="visible" value="<%=descarga.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
+<form action="AdminServlet" method="post"><input type="hidden" name="action" value="4"/><input type="hidden" name="iddownload" value="<%=descarga.getIddescarga()%>"/><input type="hidden" name="idmarca" value="<%=descarga.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=descarga.getIdmodelo()%>"/><img width="100px" src="<%=descarga.getUrlimagen()%>"/><br/><input type="text" name="fecha" value="<%=descarga.getFecha()%>"/><input type="text" name="idioma" value="<%=descarga.getIdioma()%>"/><br/><input type="text" name="titulo" value="<%=descarga.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=descarga.getUrlimagen()%>" size="50"/><br/><input type="text" name="visible" value="<%=descarga.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea><br/><textarea name="info" rows="30" cols="100"><%=descarga.getInfo() %></textarea><br/><textarea name="features" rows="30" cols="100"><%=descarga.getFeatures() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
 <br/><hr/>
 <%
 }

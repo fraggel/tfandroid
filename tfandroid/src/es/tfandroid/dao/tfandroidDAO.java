@@ -86,14 +86,14 @@ public class tfandroidDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible from downloads where idioma= ? and idmodelo= ? and idmarca = ? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features from downloads where idioma= ? and idmodelo= ? and idmarca = ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setInt(2,modelo);
 			calstm.setInt(3,marca);
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
-				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9));
+				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),set.getString(11));
 				listaDescargas.add(descarga);
 			}
 			conn.close();
@@ -203,14 +203,14 @@ public class tfandroidDAO {
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible from downloads where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features from downloads where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setString(2,texto);
 			calstm.setString(3,texto);
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
-				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9));
+				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),set.getString(11));
 				listaDescargas.add(descarga);
 			}
 			conn.close();

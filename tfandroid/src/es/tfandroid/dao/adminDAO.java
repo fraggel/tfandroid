@@ -105,7 +105,7 @@ public class adminDAO {
 		}
 		return ret;
 	}
-	public boolean crearDescarga(int idmarca,int idmodelo,String titulo, String descripcion, String urlimagen,String idioma, boolean visible){
+	public boolean crearDescarga(int idmarca,int idmodelo,String titulo, String descripcion, String urlimagen,String idioma, boolean visible,String info,String features){
 		ArrayList listaNoticias=null;
 		Connection conn =null;
 		try {
@@ -113,7 +113,7 @@ public class adminDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-            CallableStatement calstm=conn.prepareCall("insert into downloads(idmarca,idmodelo,titulo,descripcion,urlimagen,idioma,visible) values(?,?,?,?,?,?,?)");
+            CallableStatement calstm=conn.prepareCall("insert into downloads(idmarca,idmodelo,titulo,descripcion,urlimagen,idioma,visible) values(?,?,?,?,?,?,?,?,?)");
 			calstm.setInt(1, idmarca);
 			calstm.setInt(2, idmodelo);
 			calstm.setString(3, titulo);
@@ -121,6 +121,8 @@ public class adminDAO {
 			calstm.setString(5, urlimagen);
 			calstm.setString(6, idioma);
 			calstm.setBoolean(7, visible);
+			calstm.setString(8, info);
+			calstm.setString(9, features);
 			calstm.executeUpdate();
 			conn.close();
 		} catch (Exception e) {
@@ -135,7 +137,7 @@ public class adminDAO {
 		}
 		return true;
 	}
-	public boolean modificarDescarga(String idmarca,String idmodelo,String titulo, String descripcion, String urlimagen,String idioma, String visible,String iddownload,String fecha) {
+	public boolean modificarDescarga(String idmarca,String idmodelo,String titulo, String descripcion, String urlimagen,String idioma, String visible,String iddownload,String fecha,String info,String features) {
 		ArrayList listaNoticias=null;
 		Connection conn =null;
 		boolean ret=true;
@@ -143,17 +145,19 @@ public class adminDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("update downloads set titulo= ?,urlimagen=?,descripcion=?,idioma=?,visible=?,fecha=? where idmarca=? and idmodelo=? and idioma=? and iddownload=?");
+            CallableStatement calstm=conn.prepareCall("update downloads set titulo= ?,urlimagen=?,descripcion=?,idioma=?,visible=?,fecha=?,info=?,features? where idmarca=? and idmodelo=? and idioma=? and iddownload=?");
 			calstm.setString(1, titulo);
 			calstm.setString(2, urlimagen);
 			calstm.setString(3, descripcion);
 			calstm.setString(4, idioma);
 			calstm.setBoolean(5, Boolean.parseBoolean(visible));
 			calstm.setTimestamp(6, Timestamp.valueOf(fecha));
-			calstm.setInt(7, Integer.parseInt(idmarca));
-			calstm.setInt(8, Integer.parseInt(idmodelo));
-			calstm.setString(9, idioma);
-			calstm.setInt(10, Integer.parseInt(iddownload));
+			calstm.setString(7, info);
+			calstm.setString(8, features);
+			calstm.setInt(9, Integer.parseInt(idmarca));
+			calstm.setInt(10, Integer.parseInt(idmodelo));
+			calstm.setString(11, idioma);
+			calstm.setInt(12, Integer.parseInt(iddownload));
 			calstm.executeUpdate();
 			
 			conn.close();
@@ -346,7 +350,7 @@ public class adminDAO {
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
-				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9));
+				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),set.getString(11));
 				listaDescargas.add(descarga);
 			}
 			conn.close();
@@ -376,7 +380,7 @@ public class adminDAO {
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
-				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9));
+				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),set.getString(11));
 				listaDescargas.add(descarga);
 			}
 			conn.close();

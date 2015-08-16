@@ -129,9 +129,9 @@ public class AdminServlet extends HttpServlet {
 						break;
 					case 4:
 						if(request.getParameter("crear")!=null){
-							aDao.crearDescarga(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
+							aDao.crearDescarga(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),request.getParameter("info"),request.getParameter("features"));
 						}else if(request.getParameter("modificar")!=null){
-							aDao.modificarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),request.getParameter("visible"),request.getParameter("iddownload"),request.getParameter("fecha"));
+							aDao.modificarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),request.getParameter("visible"),request.getParameter("iddownload"),request.getParameter("fecha"),request.getParameter("info"),request.getParameter("features"));
 						}else if(request.getParameter("borrar")!=null){
 							aDao.borrarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("iddownload"),request.getParameter("idioma"));
 						}
