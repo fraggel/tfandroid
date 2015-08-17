@@ -5,12 +5,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import es.tfandroid.beans.Download;
+import es.tfandroid.beans.Inicio;
 import es.tfandroid.beans.Marca;
 import es.tfandroid.beans.Modelo;
 import es.tfandroid.beans.News;
@@ -255,5 +258,73 @@ public class tfandroidDAO {
 			}
 		}
 		return listaNews;
+	}
+	public ArrayList consultarInicio(String idioma){
+		ArrayList listaConjunta=new ArrayList();
+		Connection conn =null;
+		try {
+			Context initialContext = new InitialContext();
+			Context ctx=(Context)initialContext.lookup("java:comp/env");
+			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+            conn = ds.getConnection();
+			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 order by fecha desc ");
+			calstm.setString(1, idioma);
+			ResultSet set=calstm.executeQuery();
+			
+			int cont=0;
+			while(set.next()){
+				Inicio noticia=new Inicio(set.getInt(1),-1,-1,set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7));
+				listaConjunta.add(noticia);
+				cont++;
+				if(cont==10){
+					break;
+				}
+			}
+			conn.close();
+		} catch (Exception e) {
+			if(conn!=null){
+				try {
+					conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		conn =null;
+		try {
+			Context initialContext = new InitialContext();
+			Context ctx=(Context)initialContext.lookup("java:comp/env");
+			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+            conn = ds.getConnection();
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,titulo,fecha,descripcion,urlimagen,idioma,visible from downloads where idioma= ? and visible=1 order by fecha desc ");
+			calstm.setString(1, idioma);
+			ResultSet set=calstm.executeQuery();
+			int cont=0;
+			while(set.next()){
+				Inicio descarga=new Inicio(set.getInt(1),set.getInt(3),set.getInt(3),set.getString(4),set.getTimestamp(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9));
+				listaConjunta.add(descarga);
+				cont++;
+				if(cont==10){
+					break;
+				}
+			}
+			conn.close();
+		} catch (Exception e) {
+			if(conn!=null){
+				try {
+					conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		Collections.sort(listaConjunta,new Comparator<Inicio>(){
+			public int compare(Inicio i1,Inicio i2){
+				return (i2.getFecha().compareTo(i1.getFecha()));
+				
+			}
+		});
+		
+		return listaConjunta;
 	}
 }

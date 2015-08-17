@@ -145,7 +145,7 @@ public class adminDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("update downloads set titulo= ?,urlimagen=?,descripcion=?,idioma=?,visible=?,fecha=?,info=?,features? where idmarca=? and idmodelo=? and idioma=? and iddownload=?");
+            CallableStatement calstm=conn.prepareCall("update downloads set titulo= ?,urlimagen=?,descripcion=?,idioma=?,visible=?,fecha=?,info=?,features=? where idmarca=? and idmodelo=? and idioma=? and iddownload=?");
 			calstm.setString(1, titulo);
 			calstm.setString(2, urlimagen);
 			calstm.setString(3, descripcion);

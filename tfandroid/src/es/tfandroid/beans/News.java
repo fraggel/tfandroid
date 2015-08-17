@@ -5,18 +5,18 @@ import java.sql.Timestamp;
 public class News {
 int idnoticia;
 String titulo;
-String descipcion;
+String descripcion;
 Timestamp fecha;
 String url;
 String idioma;
 boolean visible;
 
-public News(int idnoticia, String titulo, Timestamp fecha,String descipcion,
+public News(int idnoticia, String titulo, Timestamp fecha,String descripcion,
 		String url,String idioma,boolean visible) {
 	super();
 	this.idnoticia = idnoticia;
 	this.titulo = titulo;
-	this.descipcion = descipcion;
+	this.descripcion = descripcion;
 	this.fecha = fecha;
 	this.url = url;
 	this.idioma=idioma;
@@ -51,11 +51,11 @@ public String getTitulo() {
 public void setTitulo(String titulo) {
 	this.titulo = titulo;
 }
-public String getDescipcion() {
-	return descipcion;
+public String getDescripcion() {
+	return descripcion;
 }
-public void setDescipcion(String descipcion) {
-	this.descipcion = descipcion;
+public void setDescripcion(String descripcion) {
+	this.descripcion = descripcion;
 }
 public Timestamp getFecha() {
 	return fecha;

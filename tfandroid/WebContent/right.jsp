@@ -26,7 +26,8 @@
 %>
 <div id="recuadroRight"><a href="ControlServlet?action=3&detalle=<%=noticia.getIdnoticia()%>"><%=noticia.getFecha()%><br/><img width="90%" src="<%=noticia.getUrl()%>"/><br/><%=noticia.getTitulo()%><br/><%=RB.getString("home.readmore") %></a></div>
 <% }%>
-
+<div id="recuadroRight">Foro<br/>
+</div>
 <div id="recuadroRight">Facebook<br/>
 <!-- Facebook Badge START --><a href="https://www.facebook.com/TFAndroidDevelopers" title="TF Android Developers" style="font-family: &quot;lucida grande&quot;,tahoma,verdana,arial,sans-serif; font-size: 11px; font-variant: normal; font-style: normal; font-weight: normal; color: #3B5998; text-decoration: none;" target="_TOP">TF Android Developers</a><span style="font-family: &#039;lucida grande&#039;,tahoma,verdana,arial,sans-serif;font-size: 11px;line-height: 16px;font-variant: normal;font-style: normal;font-weight: normal;color: #555555;text-decoration: none;">&nbsp;|&nbsp;</span><br /><a href="https://www.facebook.com/TFAndroidDevelopers" title="TF Android Developers" target="_TOP"><img class="img" src="https://badge.facebook.com/badge/1469395773303675.11172.292103911.png" style="border: 0px;" alt="" /></a><!-- Facebook Badge END -->
 </div>
@@ -45,10 +46,10 @@
 <br/>
 
 </div>
-<div id="recuadroRight">Foro<br/>
-</div>
 <div id="recuadroRight">Youtube<br/>
+<a href="https://www.youtube.com/user/TeamForceGroup" target="_blank">Youtube TF Android Developers</a><br/>
 </div>
+
 </div>
 <%}
 } %>

@@ -20,7 +20,7 @@
 	<tr>
 	<td colspan="2">
 <img src="http://www.tfandroid.es/images/<%=RB.getString("img.arribaFeat") %>"/>
-	<ul style="margin-left:50px;margin-top:10px;">
+	<ul class="leaf" >
 <%=download.getFeatures()%>
 </ul>
 </td>

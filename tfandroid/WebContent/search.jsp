@@ -29,8 +29,10 @@
 %>
 <div id="tableDescDivImg"><a href="ControlServlet?action=3&detalle=<%=noticia.getIdnoticia()%>"><%=noticia.getFecha()%><br/><img width="90%" src="<%=noticia.getUrl()%>"/><br/><%=noticia.getTitulo()%><br/><%=RB.getString("home.readmore") %></a></div>
 <hr/>
-<% }}%>
-
+<% }
+}else{%>
+<b><%=RB.getString("home.nocontent") %></b>
+<%} %>
 
 <%@include file="footer.jsp" %>
 

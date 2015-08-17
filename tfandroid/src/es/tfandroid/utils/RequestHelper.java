@@ -10,9 +10,9 @@ import es.tfandroid.beans.Marca;
 import es.tfandroid.beans.News;
 
 public class RequestHelper {
-int action=1;
+int action=0;
 int subaction=0;
-String lang="es";
+String lang=null;
 String jsp="about.jsp";
 int detalle=-1;
 int subDetalle=-1;
@@ -28,6 +28,7 @@ ArrayList listaNewsCortas=null;
 ArrayList listaSearchs=null;
 ArrayList listaMarcas=null;
 ArrayList listaModelos=null;
+ArrayList listaInicio=null;
 public RequestHelper() {
 	// TODO Auto-generated constructor stub
 }
@@ -91,6 +92,12 @@ public void tratarRequest(HttpServletRequest request) {
 	}
 }
 
+public ArrayList getListaInicio() {
+	return listaInicio;
+}
+public void setListaInicio(ArrayList listaInicio) {
+	this.listaInicio = listaInicio;
+}
 public String getTipoDevice() {
 	return tipoDevice;
 }
