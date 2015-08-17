@@ -38,11 +38,13 @@ if(reqHelper.getTipoDevice()!=null){
 <body>
 
 <div id="aa">
+<div id="superior">
 <div id="language">
-		<a href="ControlServlet?language=es" ><img src="http://www.tfandroid.es/images/EspanaBanderaIcono.png" width="25px"/></a><a href="ControlServlet?language=en"><img src="http://www.tfandroid.es/images/ReinoUnidoBanderaIcono.png" width="25px"/></a>          
+		<a href="ControlServlet?language=es" ><img src="http://www.tfandroid.es/images/EspanaBanderaIcono.png" width="25px"/></a><a href="ControlServlet?language=en"><img src="http://www.tfandroid.es/images/ReinoUnidoBanderaIcono.png" width="25px"/></a><a href="ControlServlet?action=20"><img src="http://www.tfandroid.es/images/lupa.png" width="25px"/></a>
 </div>
 <div id="social">
 		<a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.jpg" width="25px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.jpg" width="25px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.jpg" width="25px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.jpg" width="25px"/></a>
+</div>
 </div>
 <div id="hr2"><hr/></div>
 <div id="superior">
@@ -64,12 +66,8 @@ if(reqHelper.getTipoDevice()!=null){
 </div>
 <div id="hr"><hr/></div>
 <div id="banner">
-<div id="search">
-		<form method="post" action="ControlServlet">          
-		<input type="hidden" name="action" value="20"/>
-			<input type="text" name="textSearch" size="30"/><input type="submit" name="Buscar" value="<%=RB.getString("home.search") %>"/>  
-		</form> 
-</div>
+
+<br/>
 <img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/>
 </div>
 <div id="hr"><hr/></div>

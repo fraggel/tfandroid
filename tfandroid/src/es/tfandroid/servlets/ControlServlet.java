@@ -160,8 +160,9 @@ public class ControlServlet extends HttpServlet {
 				if(reqHelper.getTxtSearch()!=null && !reqHelper.getTxtSearch().replaceAll("%", "").equals("")){
 					reqHelper.setListaDescargas(tDao.buscarEnWebDescargas(reqHelper.getTxtSearch(),reqHelper.getLang()));
 					reqHelper.setListaNews(tDao.buscarEnWebNoticias(reqHelper.getTxtSearch(),reqHelper.getLang()));
-					reqHelper.setJsp("search.jsp");
+					
 				}
+				reqHelper.setJsp("search.jsp");
 				break;
 			default:
 				break;

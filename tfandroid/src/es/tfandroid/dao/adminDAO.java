@@ -113,7 +113,7 @@ public class adminDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-            CallableStatement calstm=conn.prepareCall("insert into downloads(idmarca,idmodelo,titulo,descripcion,urlimagen,idioma,visible) values(?,?,?,?,?,?,?,?,?)");
+            CallableStatement calstm=conn.prepareCall("insert into downloads(idmarca,idmodelo,titulo,descripcion,urlimagen,idioma,visible,info,features) values(?,?,?,?,?,?,?,?,?)");
 			calstm.setInt(1, idmarca);
 			calstm.setInt(2, idmodelo);
 			calstm.setString(3, titulo);
@@ -373,7 +373,7 @@ public class adminDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible from downloads where idioma= ? and idmodelo= ? and idmarca = ? order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features from downloads where idioma= ? and idmodelo= ? and idmarca = ? order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setInt(2,modelo);
 			calstm.setInt(3,marca);

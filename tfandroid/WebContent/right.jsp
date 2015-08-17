@@ -18,7 +18,7 @@
 	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
 	marca.getClass();
 %>
-<a href='ControlServlet?action=2&subaction=<%=marca.getIdmarca() %>'><img width="70%" src="<%=marca.getUrlImagen()%>"/></a><br/><br/><br/>
+<a href='ControlServlet?action=2&detalle=<%=marca.getIdmarca() %>'><img width="70%" src="<%=marca.getUrlImagen()%>"/></a><br/><br/>
 <% }%>
 </div>
 <%for (int x=0;x<reqHelper.getListaNewsCortas().size();x++){

@@ -31,7 +31,7 @@ Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>
 </select><br/><br/>
-<input type="submit"/><br/>
+<input type="submit" name="crear" value="Crear"/><br/>
 </form>
 <br/><br/><br/>
 <form action="AdminServlet" method="post">
