@@ -49,17 +49,17 @@ public class AdminServlet extends HttpServlet {
 		RequestHelper reqHelper=null;
 	    HttpSession session=null;
 	    session=request.getSession(true);
-	    if(session.getAttribute("requestHelper")!=null){
-	    	reqHelper=(RequestHelper)session.getAttribute("requestHelper");
-    		if(reqHelper==null){
-    			reqHelper=new RequestHelper();
-    		}
-
-		}else{
-			reqHelper=new RequestHelper();
-			session=request.getSession(true);
-		}
-	    reqHelper.tratarRequest(request);
+	    reqHelper=new RequestHelper();
+    	
+		reqHelper.tratarRequest(request);
+		if(session.getAttribute("language")!=null){
+			if(reqHelper.getLang()==null){
+				reqHelper.setLang((String)session.getAttribute("language"));
+			}
+    	}else{
+    		reqHelper.setLang("es");
+    	}
+    	session.setAttribute("language", reqHelper.getLang());
 		if(request.getParameter("user")!=null && request.getParameter("pass")!=null){
 			if("admin".equals(request.getParameter("user")) && "tfandroid".equals(request.getParameter("pass"))){				
 				session.setAttribute("admin", "1");
@@ -129,9 +129,9 @@ public class AdminServlet extends HttpServlet {
 						break;
 					case 4:
 						if(request.getParameter("crear")!=null){
-							aDao.crearDescarga(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),request.getParameter("info"),request.getParameter("features"));
+							aDao.crearDescarga(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),request.getParameter("info"),request.getParameter("features"),request.getParameter("marcaModelo"));
 						}else if(request.getParameter("modificar")!=null){
-							aDao.modificarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),request.getParameter("visible"),request.getParameter("iddownload"),request.getParameter("fecha"),request.getParameter("info"),request.getParameter("features"));
+							aDao.modificarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),request.getParameter("visible"),request.getParameter("iddownload"),request.getParameter("fecha"),request.getParameter("info"),request.getParameter("features"),request.getParameter("marcaModelo"));
 						}else if(request.getParameter("borrar")!=null){
 							aDao.borrarDescarga(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("iddownload"),request.getParameter("idioma"));
 						}
@@ -148,7 +148,7 @@ public class AdminServlet extends HttpServlet {
 					
 			    	}
 			    	
-					session.setAttribute("requestHelper",reqHelper);
+			    	request.setAttribute("requestHelper",reqHelper);
 					RequestDispatcher rqDis=request.getRequestDispatcher(reqHelper.getJsp());
 					rqDis.forward(request, response);
 				}catch(Exception e){

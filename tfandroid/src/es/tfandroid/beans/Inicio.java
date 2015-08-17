@@ -11,11 +11,12 @@ public class Inicio {
 	String urlimagen;
 	String descripcion;
 	String idioma;
+	String marcaModelo;
 	boolean visible;
 	
 	
 	public Inicio(int idprincipal, int idsecundario, int idterciario, String titulo,Timestamp fecha,String descripcion,  String urlimagen,
-			String idioma, boolean visible) {
+			String idioma, boolean visible,String marcaModelo) {
 		super();
 		this.idprincipal = idprincipal;
 		this.idsecundario = idsecundario;
@@ -26,8 +27,17 @@ public class Inicio {
 		this.idioma = idioma;
 		this.visible = visible;
 		this.descripcion=descripcion;
+		this.marcaModelo=marcaModelo;
 	}
 	
+	public String getMarcaModelo() {
+		return marcaModelo;
+	}
+
+	public void setMarcaModelo(String marcaModelo) {
+		this.marcaModelo = marcaModelo;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}

@@ -13,13 +13,14 @@ String urlimagen;
 String idioma;
 String info;
 String features;
+String marcaModelo;
 boolean visible;
 
 
 
 public Download(int iddescarga, int idmarca, int idmodelo, Timestamp fecha,
 		String titulo, String descripcion, String urlimagen, String idioma,
-		boolean visible,String info,String features) {
+		boolean visible,String info,String features,String marcaModelo) {
 	super();
 	this.iddescarga = iddescarga;
 	this.idmarca = idmarca;
@@ -32,6 +33,15 @@ public Download(int iddescarga, int idmarca, int idmodelo, Timestamp fecha,
 	this.visible = visible;
 	this.info=info;
 	this.features=features;
+	this.marcaModelo=marcaModelo;
+}
+
+public String getMarcaModelo() {
+	return marcaModelo;
+}
+
+public void setMarcaModelo(String marcaModelo) {
+	this.marcaModelo = marcaModelo;
 }
 
 public String getInfo() {

@@ -15,7 +15,7 @@
 	%><b><%=RB.getString("menu.downloads") %></b><br/><br/><br/><% for (int x=0;x<reqHelper.getListaDescargas().size();x++){
 	Download download=(Download)reqHelper.getListaDescargas().get(x);	
 %>
-<div id="tableDescDivImg"><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>"><%=download.getFecha()%><br/><img width="90%" src="<%=download.getUrlimagen()%>"/><br/><%=download.getTitulo()%><br/><%=RB.getString("home.showdetails") %></a></div>
+<div id="tableDescDivImg"><b><%=download.getMarcaModelo() %></b><br/><a href="ControlServlet?action=4&detalle=<%=download.getIdmarca() %>&subDetalle=<%=download.getIdmodelo() %>&downloadId=<%=download.getIddescarga()%>"><%=download.getFecha()%><br/><img width="90%" src="<%=download.getUrlimagen()%>"/><br/><%=download.getTitulo()%><br/><%=RB.getString("home.showdetails") %></a></div>
 <hr/>
 <% }}%>
 

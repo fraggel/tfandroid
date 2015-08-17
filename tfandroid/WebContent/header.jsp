@@ -112,20 +112,21 @@ if(reqHelper.getTipoDevice()!=null){
 <div id="hrMenu"><hr/></div>
 <div id="myMenu">
 				<ul>
-				   <li class='<%=reqHelper.getAction()==0 ? "active " : ""%> last'><a href='ControlServlet?action=0'><span><%=RB.getString("menu.home") %></span></a></li>
-				   <li class='<%=reqHelper.getAction()==1 ? "active " : ""%>'><a href='ControlServlet?action=1'><span><%=RB.getString("menu.about") %></span></a></li>
-				   <li class='<%=reqHelper.getAction()==3 ? "active " : ""%>'><a href='ControlServlet?action=3'><span><%=RB.getString("menu.news") %></span></a></li>
-				   <li class='<%=reqHelper.getAction()==4 ? "active " : ""%>'><a href='ControlServlet?action=4'><span><%=RB.getString("menu.downloads") %></span></a></li>
+				   <li class='<%=reqHelper.getAction()==0 ? "active " : ""%> last'><span><a href='ControlServlet?action=0'><%=RB.getString("menu.home") %></a></span></li>
+				   <li class='<%=reqHelper.getAction()==1 ? "active " : ""%>'><span><a href='ControlServlet?action=1'><%=RB.getString("menu.about") %></a></span></li>
+				   <li class='<%=reqHelper.getAction()==3 ? "active " : ""%>'><span><a href='ControlServlet?action=3'><%=RB.getString("menu.news") %></a></span></li>
+				   <li class='<%=reqHelper.getAction()==4 ? "active " : ""%>'><span><a href='ControlServlet?action=4'><%=RB.getString("menu.downloads") %></a></span></li>
 				   
-				   <li class='<%=reqHelper.getAction()==5 ? "active " : ""%>'><a href='http://foro.tfandroid.es' target="_blank" ><span><%=RB.getString("menu.forum") %></span></a></li>
-				   <li class='<%=reqHelper.getAction()==6 ? "active " : ""%>'><a href='ControlServlet?action=6'><span><%=RB.getString("menu.staff") %></span></a></li>
-				   <li class='<%=reqHelper.getAction()==7 ? "active " : ""%> last'><a href='ControlServlet?action=7'><span><%=RB.getString("menu.contact") %></span></a></li>
+				   <li class='<%=reqHelper.getAction()==5 ? "active " : ""%>'><span><a href='http://foro.tfandroid.es' target="_blank" ><%=RB.getString("menu.forum") %></a></span></li>
+				   <li class='<%=reqHelper.getAction()==6 ? "active " : ""%>'><span><a href='ControlServlet?action=6'><%=RB.getString("menu.staff") %></a></span></li>
+				   <li class='<%=reqHelper.getAction()==7 ? "active " : ""%> last'><span><a href='ControlServlet?action=7'><%=RB.getString("menu.contact") %></a></span></li>
 				</ul>
 				</div>
-				<br/>
 				<div id="hr"><hr/></div>
+				<div id="superior">
 				<div id="banner">
-				<center><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><br/></center>
+				<center><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><br/></center>
+				</div>
 				</div>
 				<div id="hr"><hr/></div>
 <%}else{%>

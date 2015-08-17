@@ -9,7 +9,7 @@
                  es.tfandroid.beans.*" %>
 
 <html>
-<%RequestHelper reqHelper=(RequestHelper)session.getAttribute("requestHelper");
+<%RequestHelper reqHelper=(RequestHelper)request.getAttribute("requestHelper");
 ResourceBundle RB = ResourceBundle.getBundle("texts", new Locale(reqHelper.getLang()));
 
 if(reqHelper.getTipoDevice()!=null){
