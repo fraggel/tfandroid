@@ -7,31 +7,31 @@
 	<center>
 	<table border=0 width="60%">
 		<tr><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/erfae.jpg" width="130px" height="130px"/><br/> erfae
+			<img src="http://www.tfandroid.es/images/staff/erfae.png" width="130px" height="130px"/><br/> erfae
 		</td><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/newton.jpg" width="130px" height="130px"/><br/> Newton
+			<img src="http://www.tfandroid.es/images/staff/newton.png" width="130px" height="130px"/><br/> Newton
 		</td><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/fraggel.jpg" width="130px" height="130px"/><br/> Fraggel
+			<img src="http://www.tfandroid.es/images/staff/fraggel.png" width="130px" height="130px"/><br/> Fraggel
 		</td></tr>
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="33%" align="center">
-		<img src="http://www.tfandroid.es/images/staff/borx.jpg" width="130px" height="130px"/><br/> Borx
+		<img src="http://www.tfandroid.es/images/staff/borx.png" width="130px" height="130px"/><br/> Borx
 		</td><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/iberica.review.jpg" width="130px" height="130px"/><br/> iberica.review
+			<img src="http://www.tfandroid.es/images/staff/iberica.review.png" width="130px" height="130px"/><br/> iberica.review
 		</td><td width="33%" align="center">
-		<img src="http://www.tfandroid.es/images/staff/siulwon.jpg" width="130px" height="130px"/><br/> Siulwon
+		<img src="http://www.tfandroid.es/images/staff/siulwon.png" width="130px" height="130px"/><br/> Siulwon
 		</td></tr>
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/gaofeng.jpg" width="130px" height="130px"/><br/> Gaofeng159
+			<img src="http://www.tfandroid.es/images/staff/gaofeng.png" width="130px" height="130px"/><br/> Gaofeng159
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/stephanicchio.jpg" width="130px" height="130px"/><br/> Stephanicchio
+			<img src="http://www.tfandroid.es/images/staff/stephanicchio.png" width="130px" height="130px"/><br/> Stephanicchio
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/ercea.jpg" width="130px" height="130px"/><br/>	 Ercea
+			<img src="http://www.tfandroid.es/images/staff/ercea.png" width="130px" height="130px"/><br/>	 Ercea
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/josean.jpg" width="130px" height="130px"/><br/> Josean
+			<img src="http://www.tfandroid.es/images/staff/josean.png" width="130px" height="130px"/><br/> Josean
 		</td></tr>
 		
 	</table>
@@ -55,31 +55,31 @@
 	<center>
 	<table border=0 width="60%">
 		<tr><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/erfae.jpg" width="130px" height="130px"/><br/> erfae
+			<img src="http://www.tfandroid.es/images/staff/erfae.png" width="130px" height="130px"/><br/> erfae
 		</td><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/newton.jpg" width="130px" height="130px"/><br/> Newton
+			<img src="http://www.tfandroid.es/images/staff/newton.png" width="130px" height="130px"/><br/> Newton
 		</td><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/fraggel.jpg" width="130px" height="130px"/><br/> Fraggel
+			<img src="http://www.tfandroid.es/images/staff/fraggel.png" width="130px" height="130px"/><br/> Fraggel
 		</td></tr>
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="33%" align="center">
-		<img src="http://www.tfandroid.es/images/staff/borx.jpg" width="130px" height="130px"/><br/> Borx
+		<img src="http://www.tfandroid.es/images/staff/borx.png" width="130px" height="130px"/><br/> Borx
 		</td><td width="33%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/iberica.review.jpg" width="130px" height="130px"/><br/> iberica.review
+			<img src="http://www.tfandroid.es/images/staff/iberica.review.png" width="130px" height="130px"/><br/> iberica.review
 		</td><td width="33%" align="center">
-		<img src="http://www.tfandroid.es/images/staff/siulwon.jpg" width="130px" height="130px"/><br/> Siulwon
+		<img src="http://www.tfandroid.es/images/staff/siulwon.png" width="130px" height="130px"/><br/> Siulwon
 		</td></tr>
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/gaofeng.jpg" width="130px" height="130px"/><br/> Gaofeng159
+			<img src="http://www.tfandroid.es/images/staff/gaofeng.png" width="130px" height="130px"/><br/> Gaofeng159
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/stephanicchio.jpg" width="130px" height="130px"/><br/> Stephanicchio
+			<img src="http://www.tfandroid.es/images/staff/stephanicchio.png" width="130px" height="130px"/><br/> Stephanicchio
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/ercea.jpg" width="130px" height="130px"/><br/>	 Ercea
+			<img src="http://www.tfandroid.es/images/staff/ercea.png" width="130px" height="130px"/><br/>	 Ercea
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/josean.jpg" width="130px" height="130px"/><br/> Josean
+			<img src="http://www.tfandroid.es/images/staff/josean.png" width="130px" height="130px"/><br/> Josean
 		</td></tr>
 		
 	</table>

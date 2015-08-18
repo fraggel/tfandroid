@@ -121,7 +121,6 @@ public class ControlServlet extends HttpServlet {
 					reqHelper.setListaModelos(tDao.consultaModelosMarca(reqHelper.getDetalle()));
 					reqHelper.setJsp("downloadsModelos.jsp");
 				}else if(reqHelper.getDetalle()!=-1 && reqHelper.getSubDetalle()!=-1 && reqHelper.getDownloadId()==-1){
-					reqHelper.setListaNewsCortas(tDao.consultaNoticias(reqHelper.getLang()));
 					reqHelper.setListaDescargas(tDao.consultaDescargas(reqHelper.getLang(),reqHelper.getDetalle(),reqHelper.getSubDetalle()));
 					reqHelper.setJsp("downloads.jsp");
 				}else if(reqHelper.getDetalle()!=-1 && reqHelper.getSubDetalle()!=-1 && reqHelper.getDownloadId()!=-1){
@@ -140,8 +139,6 @@ public class ControlServlet extends HttpServlet {
 				reqHelper.setJsp("forum.jsp");
 				break;
 			case 6:
-				reqHelper.setListaNewsCortas(tDao.consultaNoticiasCortas(reqHelper.getLang()));
-				reqHelper.setListaMarcas(tDao.consultaMarcas());
 				reqHelper.setJsp("staff.jsp");
 				break;
 			case 7:

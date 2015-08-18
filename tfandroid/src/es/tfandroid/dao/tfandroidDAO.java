@@ -89,10 +89,10 @@ public class tfandroidDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmodelo= ? and idmarca = ? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmarca = ? and idmodelo= ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
-			calstm.setInt(2,modelo);
-			calstm.setInt(3,marca);
+			calstm.setInt(2,marca);
+			calstm.setInt(3,modelo);
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
@@ -302,7 +302,7 @@ public class tfandroidDAO {
 			int cont=0;
 			while(set.next()){
 				
-				Inicio descarga=new Inicio(set.getInt(1),set.getInt(3),set.getInt(3),set.getString(4),set.getTimestamp(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10));
+				Inicio descarga=new Inicio(set.getInt(1),set.getInt(2),set.getInt(3),set.getString(4),set.getTimestamp(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10));
 				listaConjunta.add(descarga);
 				cont++;
 				if(cont==10){
