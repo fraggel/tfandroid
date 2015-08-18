@@ -8,9 +8,6 @@
                  es.tfandroid.utils.RequestHelper,
                  es.tfandroid.beans.*" %>
 <%@include file="../headeradmin.jsp" %>
-<div id="contentwrapper">
-<div id="contentcolumn">
-<div class="innertube">
 <%
 if(session.getAttribute("admin")!=null){
 %>
@@ -41,29 +38,30 @@ Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
 </form>
 <br/><br/><br/>
 <table border="1" width="100%">
-<tr><td>Imagen</td><td>Nombre</td><td>Visible</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Imagen</td><td>Título</td><td>Visible</td><td>Marca</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <%for (int x=0;x<reqHelper.getListaModelos().size();x++){
 	Modelo modelo=(Modelo)reqHelper.getListaModelos().get(x);	
 	modelo.getClass();
 %>
 
 <tr>
-	<input type="hidden" name="action" value="1"/><input type="hidden" name="idmarca" value="<%=modelo.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/>
+<form action="AdminServlet" method="post">
+	<input type="hidden" name="action" value="1"/>
+	<input type="hidden" name="idmarca" value="<%=modelo.getIdmarca()%>"/>
+	<input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/>
+	<td><img width="200px" src="<%=modelo.getUrlImagen()%>"/></td>
 	<td><%=modelo.getTitulo()%></td>
-	<td><img width="100px" src="<%=modelo.getUrlImagen()%>"/></td>
 	<td><%=modelo.isVisible()%></td>
 	<td><%=modelo.getIdmarca()%></td>
-	<td><input type="submit" name="modificar" value="modificar"/></td>
+	<td><input type="submit" name="modificarMain" value="modificar"/></td>
 	<td><input type="submit" name="borrar" value="borrar"/></td>
+</form>
 </tr>
 
 <% }%>
-
+</table>
 
 <%}%>
-
 <%} %>
-</div>
-</div>
-</div>
+
 <%@include file="../footer.jsp" %>

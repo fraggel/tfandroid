@@ -8,53 +8,70 @@
                  es.tfandroid.utils.RequestHelper,
                  es.tfandroid.beans.*" %>
 <%@include file="../headeradmin.jsp" %>
-<div id="contentwrapper">
-<div id="contentcolumn">
-<div class="innertube">
+
 <%
 if(session.getAttribute("admin")!=null){
 %>
 
 <%if(reqHelper.getAction()==1){ %>
-Crear Modelo<br/>
-<form action="AdminServlet" method="post">
-<input type="hidden" name="action" value="1"/>
-<input type="hidden" name="subaction" value="1"/>
-Marca:<select name="marca">
-<%
-if(reqHelper.getListaMarcas()!=null){
-for (int x=0;x<reqHelper.getListaMarcas().size();x++){
-	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
-%>
-<option value="<%=marca.getIdmarca()%>"><%=marca.getTitulo() %></option>
-<%}
-}%>
-</select><br/>
-Nombre:<input type="text" name="nombre"/><br/>
-UrlImagen:<input type="text" name="urlimagen"/><br/>
-Visible <select name="visible">
-<option selected value="true">Si</option>
-<option value="false">No</option>
-</select><br/>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
-<input type="submit" name="crear" value="Crear"/><br/>
-</form>
-<br/><br/><br/>
-
 <%for (int x=0;x<reqHelper.getListaModelos().size();x++){
 	Modelo modelo=(Modelo)reqHelper.getListaModelos().get(x);	
 	modelo.getClass();
 %>
 <form action="AdminServlet" method="post">
-<input type="hidden" name="action" value="1"/>><input type="hidden" name="idmarca" value="<%=modelo.getIdmarca()%>"/><input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/><img width="100px" src="<%=modelo.getUrlImagen()%>"/><br/><input type="text" name="titulo" value="<%=modelo.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=modelo.getUrlImagen()%>" size="50"/><br/><textarea name="descripcion" rows="30" cols="100"><%=modelo.getDescripcion() %></textarea><br/><input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/></form>
+<input type="hidden" name="action" value="1"/>
+<input type="hidden" name="idmarca" value="<%=modelo.getIdmarca()%>"/>
+<input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/>
+Imagen: <img width="200px" src="<%=modelo.getUrlImagen()%>"/><br/>
+Título: <input type="text" name="titulo" value="<%=modelo.getTitulo()%>"/><br/>
+URL Imagen: <input type="text" name="urlimagen" value="<%=modelo.getUrlImagen()%>" size="50"/><br/>
+Descripción: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getDescripcion() %></textarea><br/>
+Visible: <input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/>
+<input type="submit" name="modificar" value="modificar"/></form>
 <br/><hr/>
 <% }%>
-
-<br/><br/><br/><br/><br/>
 <%}%>
-
+<br/><br/><br/>
+Plantilla modelos<br/>
+<textarea rows="30" cols="100">
+<tr>
+<td><center><img src="http://www.tfandroid.es/images/cpuicon.png" width="60px"/></center>
+</td>
+<td>MT6752
+</td>
+</tr>
+<tr>
+<td>
+<center><img src="http://www.tfandroid.es/images/ramicon.png" width="60px"/></center>
+</td>
+<td>
+3GB/2GB
+</td>
+</tr>
+<tr>
+<td>
+<center><img src="http://www.tfandroid.es/images/displayicon.png" width="60px"/></center>
+</td>
+<td>
+5,5", Full HD 1080p
+</td>
+</tr>
+<tr>
+<td>
+<center><img src="http://www.tfandroid.es/images/cameraicon.png" width="60px"/></center>
+</td>
+<td>
+13Mpx/5Mpx
+</td>
+</tr>
+<tr>
+<td>
+<center><img src="http://www.tfandroid.es/images/batteryicon.png" width="60px"/></center>
+</td>
+<td>
+3000mAh
+</td>
+</tr>
+</textarea>
 <%} %>
-</div>
-</div>
-</div>
 <%@include file="../footer.jsp" %>

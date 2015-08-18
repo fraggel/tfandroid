@@ -8,9 +8,6 @@
                  es.tfandroid.utils.RequestHelper,
                  es.tfandroid.beans.*" %>
 <%@include file="../headeradmin.jsp" %>
-<div id="contentwrapper">
-<div id="contentcolumn">
-<div class="innertube">
 <%
 if(session.getAttribute("admin")!=null){
 %>
@@ -39,24 +36,35 @@ Elige idioma:<select name="language">
 <option selected value="es">Español</option>
 <option value="en">Ingles</option>
 </select><br/>
-<input type="submit" name="CambiaIdioma" value="Cambiar idioma"/>
+<input type="submit" name="cambiaIdioma" value="Consultar"/>
 <input type="hidden" name="action" value="2"/>
 </form>
-
+<table border="1" width="100%">
+<tr><td>Imagen</td><td>Fecha</td><td>Título</td><td>Visible</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <%for (int x=0;x<reqHelper.getListaNews().size();x++){
 	News noticia=(News)reqHelper.getListaNews().get(x);	
 	noticia.getClass();
 %>
-<form action="AdminServlet" method="post"><input type="hidden" name="action" value="2"/><input type="hidden" name="idioma" value="<%=noticia.getIdioma()%>"/><input type="hidden" name="idnoticia" value="<%=noticia.getIdnoticia()%>"/><img width="100px" src="<%=noticia.getUrl()%>"/><br/><input type="text" name="fecha" value="<%=noticia.getFecha()%>"/><input type="text" name="titulo" value="<%=noticia.getTitulo()%>"/><br/><input type="text" name="urlimagen" value="<%=noticia.getUrl()%>" size="50"/><br/><input type="text" name="visible" value="<%=noticia.isVisible()%>"/><br/><textarea name="descripcion" rows="30" cols="100"><%=noticia.getDescripcion() %></textarea><br/><input type="submit" name="modificar" value="modificar"/><br/><input type="submit" name="borrar" value="borrar"/><br/></form>
-<br/><hr/>
-<% }%>
+<tr>
+<form action="AdminServlet" method="post">
+<input type="hidden" name="action" value="2"/>
+<input type="hidden" name="idioma" value="<%=noticia.getIdioma()%>"/>
+<input type="hidden" name="idnoticia" value="<%=noticia.getIdnoticia()%>"/>
+<td><img width="200px" src="<%=noticia.getUrl()%>"/></td>
+<td><%=noticia.getFecha()%></td>
+<td><%=noticia.getTitulo()%></td>
+<td><%=noticia.isVisible()%></td>
+<td><input type="submit" name="modificarMain" value="Modificar"/>
+<td><input type="submit" name="generarBBCODE" value="Generar BBCODE"/>
+<td><input type="submit" name="borrar" value="Borrar"/>
+</form>
+</tr>
 
+<% }%>
+</table>
 <br/><br/><br/><br/><br/><br/>
 
 <%}%>
 
 <%} %>
-</div>
-</div>
-</div>
 <%@include file="../footer.jsp" %>

@@ -8,9 +8,6 @@
                  es.tfandroid.utils.RequestHelper,
                  es.tfandroid.beans.*" %>
 <%@include file="../headeradmin.jsp" %>
-<div id="contentwrapper">
-<div id="contentcolumn">
-<div class="innertube">
 <%
 if(session.getAttribute("admin")!=null){
 %>
@@ -31,24 +28,24 @@ Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
 </form>
 <br/><br/><br/>
 <table border="1" width="100%">
-<tr><td>Imagen</td><td>Nombre</td><td>Visible</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Imagen</td><td>Título</td><td>Visible</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <%for (int x=0;x<reqHelper.getListaMarcas().size();x++){
 	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
 	marca.getClass();
 %>
 <tr>
-	<input type="hidden" name="subaction" value="1"/><input type="hidden" name="idmarca" value="<%=marca.getIdmarca()%>"/>
-	<td><img width="100px" src="<%=marca.getUrlImagen()%>"/></td>
+<form action="AdminServlet" method="post">
+	<input type="hidden" name="subaction" value="1"/>
+	<input type="hidden" name="idmarca" value="<%=marca.getIdmarca()%>"/>
+	<td><img width="200px" src="<%=marca.getUrlImagen()%>"/></td>
 	<td><%=marca.getTitulo()%></td><td><%=marca.isVisible()%></td>
-	<td><input type="submit" name="modificar" value="modificar"/></td>
+	<td><input type="submit" name="modificarMain" value="modificar"/></td>
 	<td><input type="submit" name="borrar" value="borrar"/></td>
+</form>
 </tr>
 <% }%>
 </table>
 <%}%>
 
 <%} %>
-</div>
-</div>
-</div>
 <%@include file="../footer.jsp" %>
