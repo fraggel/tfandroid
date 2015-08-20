@@ -12,6 +12,22 @@
 if(session.getAttribute("admin")!=null){
 %>
 <%if(reqHelper.getAction()==4){ %>
+Subir Imagen Descarga:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/downloads/ROMS" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
+Subir Imagen Captura:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/downloads/ROMS/screenshots" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
 Crear descarga<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="4"/>

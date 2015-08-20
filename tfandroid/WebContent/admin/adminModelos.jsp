@@ -13,6 +13,14 @@ if(session.getAttribute("admin")!=null){
 %>
 
 <%if(reqHelper.getAction()==1){ %>
+Subir Imagen Modelo:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/devices" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
 Crear Modelo<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="1"/>
@@ -33,7 +41,11 @@ Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>
 </select><br/>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
+CPU:<input type="text" name="tfcpu"/><br/>
+RAM:<input type="text" name="tfram"/><br/>
+PANTALLA:<input type="text" name="tflcd"/><br/>
+CAMARA:<input type="text" name="tfcam"/><br/>
+BATERÍA:<input type="text" name="tfbat"/><br/>
 <input type="submit" name="crear" value="Crear"/><br/>
 </form>
 <br/><br/><br/>

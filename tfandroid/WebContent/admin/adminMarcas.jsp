@@ -13,12 +13,21 @@ if(session.getAttribute("admin")!=null){
 %>
 <%if(reqHelper.getAction()==0){ %>
 </hr>
+Subir Imagen Marca:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/logos" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
 Crear Marca<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="0"/>
 <input type="hidden" name="subaction" value="1"/>
 Nombre:<input type="text" name="titulo"/><br/>
-UrlImagen:<input type="text" name="urlimagen"/><br/>
+UrlImagen:<input type="text" name="urlimagen"/> 
+		<br/>
 Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>

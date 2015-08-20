@@ -2,7 +2,16 @@ package es.tfandroid.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -157,6 +166,76 @@ public class ControlServlet extends HttpServlet {
 				}
 				reqHelper.setJsp("search.jsp");
 				break;
+			case 21:
+				int error=0;
+				if(request.getParameter("enviar")!=null){
+					if((request.getParameter("emailTo")!=null) && (request.getParameter("email")!=null) && (request.getParameter("name")!=null) && (request.getParameter("message")!=null)){
+						if((!"".equals(request.getParameter("emailTo").trim())) && (!"".equals(request.getParameter("email").trim())) && (!"".equals(request.getParameter("name").trim())) && (!"".equals(request.getParameter("message").trim()))){
+						ResourceBundle RB = ResourceBundle.getBundle("texts", new Locale(reqHelper.getLang()));
+						// Recipient's email ID needs to be mentioned.
+						int mailTo=Integer.parseInt(request.getParameter("emailTo"));
+						 String to = "";
+						 String subject="";
+						switch(mailTo){
+							case 0:
+								to="tfandroid@tfandroid.es";
+								subject="Asesoramiento a Compañías";
+								break;
+							case 1:
+								to="contacto@tfandroid.es";
+								subject="Ser miembro de Betatestrs";
+								break;
+							case 2:
+								to="web@tfandroid.es";
+								subject="Errores en Web o Foro";
+								break;
+							default:
+								break;
+						}
+					     
+					      // Sender's email ID needs to be mentioned
+					      String from = request.getParameter("email");
+					      // Assuming you are sending email from localhost
+					      String host = "mail.tfandroid.es";
+					      // Get system properties
+					      Properties properties = System.getProperties();
+					      // Setup mail server
+					      properties.setProperty("mail.smtp.host", host);
+					      properties.setProperty("mail.user", "web@tfandroid.es");
+					      properties.setProperty("mail.password", "web1234");
+					      // Get the default Session object.
+					      Session ses = Session.getDefaultInstance(properties);
+					      try{
+					         // Create a default MimeMessage object.
+					         MimeMessage message = new MimeMessage(ses);
+					         // Set From: header field of the header.
+					         message.setFrom(new InternetAddress(from));
+					         // Set To: header field of the header.
+					         message.addRecipient(Message.RecipientType.TO,
+					                                  new InternetAddress(to));
+					         // Set Subject: header field
+					         message.setSubject(subject);
+					         // Now set the actual message
+					         String texto="Mensaje recibido de "+request.getParameter("name")+" desde la web\n";
+					         texto=texto+request.getParameter("message");
+					         message.setText(texto);
+					         // Send message
+					         Transport.send(message);
+					         error=0;
+					      }catch (MessagingException mex) {
+					         mex.printStackTrace();
+					         error=2;
+					      }
+						}else{
+							error=1;
+						}
+					}else{
+						error=1;
+					}
+				}else{
+					error=-1;
+				}
+				reqHelper.setJsp("contact.jsp?error="+error);
 			default:
 				break;
 			}

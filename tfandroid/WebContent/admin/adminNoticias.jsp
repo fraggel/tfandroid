@@ -13,6 +13,14 @@ if(session.getAttribute("admin")!=null){
 %>
 
 <%if(reqHelper.getAction()==2){ %>
+Subir Imagen Noticia:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/news" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
 Crear Noticia<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="2"/>

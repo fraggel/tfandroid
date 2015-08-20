@@ -30,7 +30,7 @@ Marca/Modelo: <input type="text" name="marcaModelo" value="<%=descarga.getMarcaM
 Título. <input type="text" name="titulo" value="<%=descarga.getTitulo()%>"/><br/><br/>
 URL Imagen: <input type="text" name="urlimagen" value="<%=descarga.getUrlimagen()%>" size="50"/><br/><br/>
 Visible: <input type="text" name="visible" value="<%=descarga.isVisible()%>"/><br/><br/>
-Descripcion: <textarea name="descripcion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea><br/><br/>
+Información: <textarea name="informacion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea><br/><br/>
 Rom Info: <textarea name="info" rows="30" cols="100"><%=descarga.getInfo() %></textarea><br/><br/>
 Features Info: <textarea name="features" rows="30" cols="100"><%=descarga.getFeatures() %></textarea><br/><br/>
 <input type="submit" name="modificar" value="modificar"/><br/><br/>

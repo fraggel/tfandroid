@@ -32,46 +32,5 @@ Visible: <input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/
 <% }%>
 <%}%>
 <br/><br/><br/>
-Plantilla modelos<br/>
-<textarea rows="30" cols="100">
-<tr>
-<td><center><img src="http://www.tfandroid.es/images/cpuicon.png" width="60px"/></center>
-</td>
-<td>MT6752
-</td>
-</tr>
-<tr>
-<td>
-<center><img src="http://www.tfandroid.es/images/ramicon.png" width="60px"/></center>
-</td>
-<td>
-3GB/2GB
-</td>
-</tr>
-<tr>
-<td>
-<center><img src="http://www.tfandroid.es/images/displayicon.png" width="60px"/></center>
-</td>
-<td>
-5,5", Full HD 1080p
-</td>
-</tr>
-<tr>
-<td>
-<center><img src="http://www.tfandroid.es/images/cameraicon.png" width="60px"/></center>
-</td>
-<td>
-13Mpx/5Mpx
-</td>
-</tr>
-<tr>
-<td>
-<center><img src="http://www.tfandroid.es/images/batteryicon.png" width="60px"/></center>
-</td>
-<td>
-3000mAh
-</td>
-</tr>
-</textarea>
 <%} %>
 <%@include file="../footer.jsp" %>

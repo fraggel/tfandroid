@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSessionEvent;
 
 import es.tfandroid.dao.adminDAO;
 import es.tfandroid.dao.tfandroidDAO;
+import es.tfandroid.utils.Constantes;
 import es.tfandroid.utils.RequestHelper;
 
 /**
@@ -100,7 +101,13 @@ public class AdminServlet extends HttpServlet {
 						reqHelper.setListaMarcas(aDao.consultaMarcas());
 						reqHelper.setListaModelos(aDao.consultaModelos());
 						if(request.getParameter("crear")!=null){
-							aDao.crearModelo(Integer.parseInt(request.getParameter("marca")),request.getParameter("nombre"),request.getParameter("urlimagen"),request.getParameter("visible"),request.getParameter("descripcion"));
+							String descripcion=Constantes.plantillaModelo;
+							descripcion=descripcion.replace("TFCPU", request.getParameter("tfcpu"));
+							descripcion=descripcion.replace("TFRAM", request.getParameter("tfram"));
+							descripcion=descripcion.replace("TFLCD", request.getParameter("tflcd"));
+							descripcion=descripcion.replace("TFCAM", request.getParameter("tfcam"));
+							descripcion=descripcion.replace("TFBAT", request.getParameter("tfbat"));
+							aDao.crearModelo(Integer.parseInt(request.getParameter("marca")),request.getParameter("nombre"),request.getParameter("urlimagen"),request.getParameter("visible"),descripcion);
 							reqHelper.setJsp("admin/adminModelos.jsp");
 						}else if(request.getParameter("modificar")!=null){
 							aDao.modificarModelo(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("urlimagen"),request.getParameter("descripcion"),request.getParameter("visible"));
