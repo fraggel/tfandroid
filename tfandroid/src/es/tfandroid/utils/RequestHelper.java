@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import es.tfandroid.beans.Download;
 import es.tfandroid.beans.Marca;
+import es.tfandroid.beans.Modelo;
 import es.tfandroid.beans.News;
 
 public class RequestHelper {
@@ -19,6 +20,7 @@ int subDetalle=-1;
 int downloadId=-1;
 News noticiaActual=null;
 Download descargaActual=null;
+Modelo modeloActual=null;
 Marca companyActual=null;
 String txtSearch=null;
 String tipoDevice=null;
@@ -92,6 +94,12 @@ public void tratarRequest(HttpServletRequest request) {
 	}
 }
 
+public Modelo getModeloActual() {
+	return modeloActual;
+}
+public void setModeloActual(Modelo modeloActual) {
+	this.modeloActual = modeloActual;
+}
 public ArrayList getListaInicio() {
 	return listaInicio;
 }

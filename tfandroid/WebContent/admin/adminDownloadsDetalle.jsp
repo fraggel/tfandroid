@@ -29,8 +29,18 @@ Idioma: <input type="text" name="idioma" value="<%=descarga.getIdioma()%>"/><br/
 Marca/Modelo: <input type="text" name="marcaModelo" value="<%=descarga.getMarcaModelo()%>"/><br/><br/>
 Título. <input type="text" name="titulo" value="<%=descarga.getTitulo()%>"/><br/><br/>
 URL Imagen: <input type="text" name="urlimagen" value="<%=descarga.getUrlimagen()%>" size="50"/><br/><br/>
+URL Imagen Phone: <input type="text" name="urlimagenphone" value="<%=descarga.getUrlimagenPhone()%>" size="50"/><br/><br/>
 Visible: <input type="text" name="visible" value="<%=descarga.isVisible()%>"/><br/><br/>
-Información: <textarea name="informacion" rows="30" cols="100"><%=descarga.getDescripcion() %></textarea><br/><br/>
+Intro: <textarea name="intro" rows="30" cols="100"><%=descarga.getIntro() %></textarea><br/><br/>
+Changelog:<textarea name="changelog" rows="30" cols="100"><%=descarga.getChangelog() %></textarea><br/><br/>
+FAQ: <textarea name="faq" rows="30" cols="100"><%=descarga.getFaq()%></textarea><br/><br/>
+Install: <textarea name="install" rows="30" cols="100"><%=descarga.getInstall() %></textarea><br/><br/>
+Captura1: <textarea name="screenshots1" rows="30" cols="100"><%=descarga.getScreenshots1() %></textarea><br/><br/>
+Captura2: <textarea name="screenshots2" rows="30" cols="100"><%=descarga.getScreenshots2() %></textarea><br/><br/>
+Enlace MEGA: <textarea name="mega" rows="30" cols="100"><%=descarga.getMega() %></textarea><br/><br/>
+Enlace GDRIVE: <textarea name="gdrive" rows="30" cols="100"><%=descarga.getGdrive() %></textarea><br/><br/>
+Créditos: <textarea name="credits" rows="30" cols="100"><%=descarga.getCredits() %></textarea><br/><br/>
+
 Rom Info: <textarea name="info" rows="30" cols="100"><%=descarga.getInfo() %></textarea><br/><br/>
 Features Info: <textarea name="features" rows="30" cols="100"><%=descarga.getFeatures() %></textarea><br/><br/>
 <input type="submit" name="modificar" value="modificar"/><br/><br/>
@@ -38,7 +48,6 @@ Features Info: <textarea name="features" rows="30" cols="100"><%=descarga.getFea
 </tr>
 <%
 }%>
-<iframe src="http://www.quackit.com/html/online-html-editor/full/" width="100%" height="1000px"></iframe><br/>
 <iframe src="http://www.garyshood.com/htmltobb/" width="100%" height="1000px"></iframe>
 <%}
 } 

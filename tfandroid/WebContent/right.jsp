@@ -4,6 +4,8 @@
                  javax.servlet.*,
                  es.tfandroid.utils.RequestHelper,
                  es.tfandroid.beans.*" %>
+</div>
+</div>
                  <%if(reqHelper.getTipoDevice()!=null){
 	if("mobile".equals(reqHelper.getTipoDevice())){
 		%>
@@ -13,25 +15,24 @@
 	}else{	
 %>
 <div id="rigth">
-
-<div id="recuadroRight">
-<%for (int x=0;x<reqHelper.getListaMarcas().size();x++){
-	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
-	marca.getClass();
-%>
-<a href='ControlServlet?action=2&detalle=<%=marca.getIdmarca() %>'><img width="70%" src="<%=marca.getUrlImagen()%>"/></a><br/><br/>
-<% }%>
-</div>
-<%for (int x=0;x<reqHelper.getListaNewsCortas().size();x++){
-	News noticia=(News)reqHelper.getListaNewsCortas().get(x);	
-%>
 <div id="recuadroRight">
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"><input name="cmd" type="hidden" value="_s-xclick" /><br />
 <input name="hosted_button_id" type="hidden" value="U8RJD58H3MDUG" /><br />
 <center><input alt="PayPal. La forma rápida y segura de pagar en Internet." name="submit" src="http://www.tfandroid.es/images/downloads/donatees.gif" type="image" width="200px"/><br />
 <img src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" alt="" width="1" height="1" border="0" /></center></form>
 </div>
-<div id="recuadroRight"><a href="ControlServlet?action=3&detalle=<%=noticia.getIdnoticia()%>"><%=noticia.getFecha()%><br/><img width="90%" src="<%=noticia.getUrl()%>"/><br/><%=noticia.getTitulo()%><br/><%=RB.getString("home.readmore") %></a></div>
+<div id="recuadroRightMarcas">
+<%for (int x=0;x<reqHelper.getListaMarcas().size();x++){
+	Marca marc=(Marca)reqHelper.getListaMarcas().get(x);	
+%>
+<a href='ControlServlet?action=2&detalle=<%=marc.getIdmarca() %>'><center><img src="<%=marc.getUrlImagen()%>"/></center></a><br/>
+<% }%>
+</div>
+<%for (int x=0;x<reqHelper.getListaNewsCortas().size();x++){
+	News noti=(News)reqHelper.getListaNewsCortas().get(x);	
+%>
+
+<div id="recuadroRight"><a href="ControlServlet?action=3&detalle=<%=noti.getIdnoticia()%>"><%=noti.getFecha()%><br/><img width="90%" src="<%=noti.getUrl()%>"/><br/><%=noti.getTitulo()%><br/><%=RB.getString("home.readmore") %></a></div>
 <% }%>
 <div id="recuadroRight">Foro<br/>
 </div>

@@ -1,5 +1,5 @@
 <%@include file="header.jsp" %>
-<%@include file="right.jsp" %>
+<div id="containerLinea">
 
 <div id="noticiaDetails">
 <%News noticia=(News)reqHelper.getNoticiaActual();%>
@@ -8,5 +8,6 @@
 <center><img src="<%=noticia.getUrl()%>"/></center><br/><br/>
 <%=noticia.getDescripcion() %>
 </div>
-
+</div>
+<%@include file="right.jsp" %>
 <%@include file="footer.jsp" %>

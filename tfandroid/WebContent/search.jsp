@@ -1,5 +1,5 @@
 <%@include file="header.jsp" %>
-<%@include file="right.jsp" %>
+<div id="containerLinea">
 <form method="post" action="ControlServlet">          
 		<input type="hidden" name="action" value="20"/>
 			<input type="text" name="textSearch" size="30"/><input type="submit" name="Buscar" value="<%=RB.getString("home.search") %>"/>  
@@ -33,7 +33,8 @@
 }else{%>
 <b><%=RB.getString("home.nocontent") %></b>
 <%} %>
-
+</div>
+<%@include file="right.jsp" %>
 <%@include file="footer.jsp" %>
 
 

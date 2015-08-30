@@ -12,63 +12,6 @@
 if(session.getAttribute("admin")!=null){
 %>
 <%if(reqHelper.getAction()==4){ %>
-Subir Imagen Descarga:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
-            File:
-            <input type="file" name="file" id="file" /> <br/>
-            Destination:
-            <input type="text" value="/public_html/images/downloads/ROMS" name="destination"/>
-            </br>
-            <input type="submit" value="Subir imagen" name="upload" id="upload" />
-</form><br/>
-Subir Imagen Captura:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
-            File:
-            <input type="file" name="file" id="file" /> <br/>
-            Destination:
-            <input type="text" value="/public_html/images/downloads/ROMS/screenshots" name="destination"/>
-            </br>
-            <input type="submit" value="Subir imagen" name="upload" id="upload" />
-</form><br/>
-Crear descarga<br/>
-<form action="AdminServlet" method="post">
-<input type="hidden" name="action" value="4"/>
-<input type="hidden" name="subaction" value="1"/>
-Marca:<select name="idmarca">
-<%
-if(reqHelper.getListaMarcas()!=null){
-for (int x=0;x<reqHelper.getListaMarcas().size();x++){
-	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
-%>
-<option value="<%=marca.getIdmarca()%>"><%=marca.getTitulo() %></option>
-<%}
-}%>
-</select><br/>
-Modelo:<select name="idmodelo">
-<%
-if(reqHelper.getListaModelos()!=null){
-for (int x=0;x<reqHelper.getListaModelos().size();x++){
-	Modelo modelo=(Modelo)reqHelper.getListaModelos().get(x);	
-%>
-<option value="<%=modelo.getIdmodelo()%>"><%=modelo.getTitulo() %></option>
-<%}
-}%>
-</select><br/>
-Marca y Modelo:<input type="text" name="marcaModelo"/><br/>
-Titulo:<input type="text" name="titulo"/><br/>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
-Rom Info:<textarea name="info" rows="30" cols="100"></textarea><br/>
-Rom Features:<textarea name="features" rows="30" cols="100"></textarea><br/>
-Url Imagen:<input type="text" name="urlimagen"/><br/>
-Idioma:<select name="idioma">
-<option selected value="es">Español</option>
-<option value="en">Ingles</option>
-</select><br/>
-Visible <select name="visible">
-<option selected value="true">Si</option>
-<option value="false">No</option>
-</select><br/><br/>
-<input type="submit" name="crear" value="Crear"/><br/>
-</form>
-<br/><br/><br/>
 <form action="AdminServlet" method="post">
 Elige Marca:<select name="idmarca">
 <%
@@ -128,12 +71,76 @@ Elige idioma:<select name="language">
 	<br/>
 	<br/>
 <%}%>
+Subir Imagen Descarga:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/downloads/ROMS" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
+Subir Imagen Captura:<form method="POST" action="uploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            Destination:
+            <input type="text" value="/public_html/images/downloads/ROMS/screenshots" name="destination"/>
+            </br>
+            <input type="submit" value="Subir imagen" name="upload" id="upload" />
+</form><br/>
+Crear descarga<br/>
+<form action="AdminServlet" method="post">
+<input type="hidden" name="action" value="4"/>
+<input type="hidden" name="subaction" value="1"/>
+Marca:<select name="idmarca">
+<%
+if(reqHelper.getListaMarcas()!=null){
+for (int x=0;x<reqHelper.getListaMarcas().size();x++){
+	Marca marca=(Marca)reqHelper.getListaMarcas().get(x);	
+%>
+<option value="<%=marca.getIdmarca()%>"><%=marca.getTitulo() %></option>
+<%}
+}%>
+</select><br/>
+Modelo:<select name="idmodelo">
+<%
+if(reqHelper.getListaModelos()!=null){
+for (int x=0;x<reqHelper.getListaModelos().size();x++){
+	Modelo modelo=(Modelo)reqHelper.getListaModelos().get(x);	
+%>
+<option value="<%=modelo.getIdmodelo()%>"><%=modelo.getTitulo() %></option>
+<%}
+}%>
+</select><br/>
+Marca y Modelo:<input type="text" name="marcaModelo"/><br/>
+Titulo:<input type="text" name="titulo"/><br/>
+Intro: <textarea name="intro" rows="30" cols="100"></textarea><br/><br/>
+Changelog:<textarea name="changelog" rows="30" cols="100"></textarea><br/><br/>
+FAQ: <textarea name="faq" rows="30" cols="100"></textarea><br/><br/>
+Install: <textarea name="install" rows="30" cols="100"></textarea><br/><br/>
+Captura1: <textarea name="screenshots1" rows="30" cols="100"></textarea><br/><br/>
+Captura2: <textarea name="screenshots2" rows="30" cols="100"></textarea><br/><br/>
+Enlace MEGA: <textarea name="mega" rows="30" cols="100"></textarea><br/><br/>
+Enlace GDRIVE: <textarea name="gdrive" rows="30" cols="100"></textarea><br/><br/>
+Créditos: <textarea name="credits" rows="30" cols="100"></textarea><br/><br/>
+Rom Info:<textarea name="info" rows="30" cols="100"></textarea><br/>
+Rom Features:<textarea name="features" rows="30" cols="100"></textarea><br/>
+Url Imagen:<input type="text" name="urlimagen"/><br/>
+URL Imagen Phone: <input type="text" name="urlimagenphone" size="50"/><br/>
+Idioma:<select name="idioma">
+<option selected value="es">Español</option>
+<option value="en">Ingles</option>
+</select><br/>
+Visible <select name="visible">
+<option selected value="true">Si</option>
+<option value="false">No</option>
+</select><br/><br/>
+<input type="submit" name="crear" value="Crear"/><br/>
+</form>
+<br/><br/><br/>
+
 <%	
 }
 %>
-<iframe src="http://www.quackit.com/html/online-html-editor/full/" width="100%" height="1000px"></iframe><br/>
-<iframe src="http://www.garyshood.com/htmltobb/" width="100%" height="1000px"></iframe>
-
 <%} %>
 
 <%@include file="../footer.jsp" %>

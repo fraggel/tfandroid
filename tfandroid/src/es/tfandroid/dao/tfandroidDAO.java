@@ -89,14 +89,34 @@ public class tfandroidDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmarca = ? and idmodelo= ? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmarca = ? and idmodelo= ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setInt(2,marca);
 			calstm.setInt(3,modelo);
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
-				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),set.getString(11),set.getString(12));
+				Download descarga=new Download(set.getInt(1),
+												set.getInt(2),
+												set.getInt(3),
+												set.getTimestamp(4),
+												set.getString(5),
+												set.getString(6),
+												set.getString(7),
+												set.getString(8),
+												set.getString(9),
+												set.getString(10),
+												set.getString(11),
+												set.getString(12),
+												set.getString(13),
+												set.getString(14),
+												set.getString(15),
+												set.getString(16),
+												set.getString(17),
+												set.getBoolean(18),
+												set.getString(19),
+												set.getString(20),
+												set.getString(21));
 				listaDescargas.add(descarga);
 			}
 			conn.close();
@@ -146,12 +166,12 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,descripcion,visible from modelo where visible=1 order by idmodelo asc ");
+			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible from modelo where visible=1 order by idmodelo asc ");
 			ResultSet set=calstm.executeQuery();
 			listaModelos=new ArrayList();
 			int cont=0;
 			while(set.next()){
-				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getBoolean(6));
+				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10));
 				listaModelos.add(modelo);
 				cont++;
 			}
@@ -175,13 +195,13 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,descripcion,visible from modelo where idmarca = ? and visible=1 order by idmodelo asc ");
+			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible from modelo where idmarca = ? and visible=1 order by idmodelo asc ");
 			calstm.setInt(1, idmarca);
 			ResultSet set=calstm.executeQuery();
 			listaModelos=new ArrayList();
 			int cont=0;
 			while(set.next()){
-				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getBoolean(6));
+				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10));
 				listaModelos.add(modelo);
 				cont++;
 			}
@@ -206,14 +226,34 @@ public class tfandroidDAO {
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,descripcion,urlimagen,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setString(2,texto);
 			calstm.setString(3,texto);
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
-				Download descarga=new Download(set.getInt(1),set.getInt(2),set.getInt(3),set.getTimestamp(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),set.getString(11),set.getString(12));
+					Download descarga=new Download(set.getInt(1),
+													set.getInt(2),
+													set.getInt(3),
+													set.getTimestamp(4),
+													set.getString(5),
+													set.getString(6),
+													set.getString(7),
+													set.getString(8),
+													set.getString(9),
+													set.getString(10),
+													set.getString(11),
+													set.getString(12),
+													set.getString(13),
+													set.getString(14),
+													set.getString(15),
+													set.getString(16),
+													set.getString(17),
+													set.getBoolean(18),
+													set.getString(19),
+													set.getString(20),
+													set.getString(21));
 				listaDescargas.add(descarga);
 			}
 			conn.close();
@@ -296,7 +336,7 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,titulo,fecha,descripcion,urlimagen,idioma,visible,marcaModelo from downloads where idioma= ? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,titulo,fecha,'',urlimagen,idioma,visible,marcaModelo from downloads where idioma= ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
 			ResultSet set=calstm.executeQuery();
 			int cont=0;
@@ -327,5 +367,31 @@ public class tfandroidDAO {
 		});
 		
 		return listaConjunta;
+	}
+	public Modelo consultaModelo(int detalle, int subDetalle) {
+			Connection conn =null;
+			Modelo modelo=null;
+			try {
+				Context initialContext = new InitialContext();
+				Context ctx=(Context)initialContext.lookup("java:comp/env");
+	            conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
+	            CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible from modelo where idmarca=? and idmodelo=? order by idmodelo asc ");
+				calstm.setInt(1, detalle);
+				calstm.setInt(2, subDetalle);
+	            ResultSet set=calstm.executeQuery();
+				while(set.next()){
+					modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10));
+				}
+				conn.close();
+			} catch (Exception e) {
+				if(conn!=null){
+					try {
+						conn.close();
+					} catch (Exception e2) {
+						// TODO: handle exception
+					}
+				}
+			}
+			return modelo;
 	}
 }

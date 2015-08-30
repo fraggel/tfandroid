@@ -46,9 +46,7 @@ if(reqHelper.getTipoDevice()!=null){
 <body >
 <%}
 } %>
-
-
-<div id="aa">
+<div id="container">
 <%if(reqHelper.getTipoDevice()!=null){
 	if("mobile".equals(reqHelper.getTipoDevice())){
 		%>
@@ -138,6 +136,39 @@ if(reqHelper.getTipoDevice()!=null){
 	
 <%}}%>
 
+<div id="titleWeb">
+<%
+switch(reqHelper.getAction()){
+case 0:
+	%><%=RB.getString("menu.home") %><%
+	break;
+case 1:
+	%><%=RB.getString("menu.about") %><%
+	break;
+case 3:
+	%><%=RB.getString("menu.news") %><%
+	break;
+case 4:
+	%><%=RB.getString("menu.downloads") %><%
+	break;
+case 5:
+	%><%=RB.getString("menu.forum") %><%
+	break;
+case 6:
+	%><%=RB.getString("menu.staff") %><%
+	break;
+case 7:
+	%><%=RB.getString("menu.contact") %><%
+	break;
+default:
+	break;
+}
+%>
+</div>
+
 
 <div id="main">
-<div id="maincontainer">
+
+<div id="wrapper">
+
+<div id="content">

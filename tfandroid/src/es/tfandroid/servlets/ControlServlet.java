@@ -130,6 +130,7 @@ public class ControlServlet extends HttpServlet {
 					reqHelper.setListaModelos(tDao.consultaModelosMarca(reqHelper.getDetalle()));
 					reqHelper.setJsp("downloadsModelos.jsp");
 				}else if(reqHelper.getDetalle()!=-1 && reqHelper.getSubDetalle()!=-1 && reqHelper.getDownloadId()==-1){
+					reqHelper.setModeloActual(tDao.consultaModelo(reqHelper.getDetalle(),reqHelper.getSubDetalle()));
 					reqHelper.setListaDescargas(tDao.consultaDescargas(reqHelper.getLang(),reqHelper.getDetalle(),reqHelper.getSubDetalle()));
 					reqHelper.setJsp("downloads.jsp");
 				}else if(reqHelper.getDetalle()!=-1 && reqHelper.getSubDetalle()!=-1 && reqHelper.getDownloadId()!=-1){

@@ -1,5 +1,5 @@
 <%@include file="header.jsp" %>
-<%@include file="right.jsp" %>
+<div id="containerLinea">
 <%if("es".equals(reqHelper.getLang())){ %>
 	Bienvenido a TF Android Developers:<br/><br/>
 	
@@ -97,6 +97,6 @@
 	Marketing: iberica.review<br/><br/>
 	Grupo de Betatesters<br/><br/>
 <%} %>
-
-
+</div>
+<%@include file="right.jsp" %>
 <%@include file="footer.jsp" %>

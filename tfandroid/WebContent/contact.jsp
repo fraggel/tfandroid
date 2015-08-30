@@ -1,9 +1,8 @@
 <%@include file="header.jsp" %>
-<%@include file="right.jsp" %>
+<div id="containerLinea">
 <form action="ControlServlet" method="post">
 
 <input type="hidden" name="action" value="21" />
-<b><%=RB.getString("menu.contact") %></b><br/><br/>
 <%if (request.getParameter("error")!=null){
 	if(!"-1".equals(request.getParameter("error"))){
 		if("0".equals(request.getParameter("error"))){
@@ -36,4 +35,6 @@
 <a href="mailto:contacto@tfandroid.es">contacto@tfandroid.es</a><br/>
 <%=RB.getString("mail.manualContactEmail3") %><br/>
 <a href="mailto:web@tfandroid.es">web@tfandroid.es</a><br/><br/><br/><br/><br/>
+</div>
+<%@include file="right.jsp" %>
 <%@include file="footer.jsp" %>

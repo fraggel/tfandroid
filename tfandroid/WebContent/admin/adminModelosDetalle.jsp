@@ -25,7 +25,11 @@ if(session.getAttribute("admin")!=null){
 Imagen: <img width="200px" src="<%=modelo.getUrlImagen()%>"/><br/>
 Título: <input type="text" name="titulo" value="<%=modelo.getTitulo()%>"/><br/>
 URL Imagen: <input type="text" name="urlimagen" value="<%=modelo.getUrlImagen()%>" size="50"/><br/>
-Descripción: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getDescripcion() %></textarea><br/>
+CPU: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getCpu() %></textarea><br/>
+RAM: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getRam() %></textarea><br/>
+DISPLAY: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getDisplay() %></textarea><br/>
+CAMARA: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getCamara() %></textarea><br/>
+BATERIA: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getBateria() %></textarea><br/>
 Visible: <input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/>
 <input type="submit" name="modificar" value="modificar"/></form>
 <br/><hr/>
