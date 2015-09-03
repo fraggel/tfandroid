@@ -12,7 +12,9 @@
 			<img src="http://www.tfandroid.es/images/staff/newton.png" width="130px" height="130px"/><br/> Newton
 		</td><td width="33%" align="center">
 			<img src="http://www.tfandroid.es/images/staff/fraggel.png" width="130px" height="130px"/><br/> Fraggel
-		</td></tr>
+		</td><td width="33%" align="center">
+			<img src="http://www.tfandroid.es/images/staff/hernan.png" width="130px" height="130px"/><br/> herna</tr>
+		</td>
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="33%" align="center">
@@ -25,9 +27,9 @@
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/gaofeng.png" width="130px" height="130px"/><br/> Gaofeng159
+			<img src="http://www.tfandroid.es/images/staff/gaofeng.png" width="130px" height="130px"/><br/> Gaofeng
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/stephanicchio.png" width="130px" height="130px"/><br/> Stephanicchio
+			<img src="http://www.tfandroid.es/images/staff/javichu.png" width="130px" height="130px"/><br/> Javichu
 		</td><td width="25%" align="center">
 			<img src="http://www.tfandroid.es/images/staff/ercea.png" width="130px" height="130px"/><br/>	 Ercea
 		</td><td width="25%" align="center">
@@ -38,8 +40,8 @@
 	</center>
 	<br/><br/><br/>
 	Cada uno de nosotros tenemos un rol principal dentro del equipo:<br/><br/><br/>
-	Desarrollo: Fraggel, erfae, Newton, Gaofeng159.<br/><br/>
-	Diseño: Stephanicchio.<br/><br/>
+	Desarrollo: Fraggel, erfae, Newton, Gaofeng, herna.<br/><br/>
+	Diseño: Javichu.<br/><br/>
 	Web: Siulwon.<br/><br/>
 	Redes Sociales: Siulwon.<br/><br/>
 	Contenido: Borx.<br/><br/>
@@ -60,6 +62,8 @@
 			<img src="http://www.tfandroid.es/images/staff/newton.png" width="130px" height="130px"/><br/> Newton
 		</td><td width="33%" align="center">
 			<img src="http://www.tfandroid.es/images/staff/fraggel.png" width="130px" height="130px"/><br/> Fraggel
+		</td><td width="33%" align="center">
+			<img src="http://www.tfandroid.es/images/staff/hernan.png" width="130px" height="130px"/><br/> herna
 		</td></tr>
 		</table>
 		<table border=0 width="60%">
@@ -73,9 +77,9 @@
 		</table>
 		<table border=0 width="60%">
 		<tr><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/gaofeng.png" width="130px" height="130px"/><br/> Gaofeng159
+			<img src="http://www.tfandroid.es/images/staff/gaofeng.png" width="130px" height="130px"/><br/> Gaofeng
 		</td><td width="25%" align="center">
-			<img src="http://www.tfandroid.es/images/staff/stephanicchio.png" width="130px" height="130px"/><br/> Stephanicchio
+			<img src="http://www.tfandroid.es/images/staff/javichu.png" width="130px" height="130px"/><br/> Javichu
 		</td><td width="25%" align="center">
 			<img src="http://www.tfandroid.es/images/staff/ercea.png" width="130px" height="130px"/><br/>	 Ercea
 		</td><td width="25%" align="center">
@@ -86,8 +90,8 @@
 	</center>
 	<br/><br/><br/>
 	Cada uno de nosotros tenemos un rol principal dentro del equipo:<br/><br/><br/>
-	Desarrollo: Fraggel, erfae, Newton, Gaofeng159.<br/><br/>
-	Diseño: Stephanicchio.<br/><br/>
+	Desarrollo: Fraggel, erfae, Newton, Gaofeng, herna.<br/><br/>
+	Diseño: Javichu.<br/><br/>
 	Web: Siulwon.<br/><br/>
 	Redes Sociales: Siulwon.<br/><br/>
 	Contenido: Borx.<br/><br/>

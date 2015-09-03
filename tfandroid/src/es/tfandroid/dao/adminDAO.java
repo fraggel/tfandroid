@@ -418,7 +418,7 @@ public class adminDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmarca = ? and idmodelo= ? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmarca = ? and idmodelo= ? order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setInt(2,marca);
 			calstm.setInt(3,modelo);
@@ -641,7 +641,7 @@ public class adminDAO {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idmarca = ? and idmodelo= ? and iddownload=? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idmarca = ? and idmodelo= ? and iddownload=? order by fecha desc ");
 			calstm.setInt(1, marca);
 			calstm.setInt(2,modelo);
 			calstm.setInt(3,iddownload);

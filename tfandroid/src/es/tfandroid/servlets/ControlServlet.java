@@ -6,8 +6,10 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -59,8 +61,14 @@ public class ControlServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	    RequestHelper reqHelper=null;
 	    HttpSession session=null;
+	    boolean sesionCaducada=false;
 	    try {
-	    	session=request.getSession(true);
+	    	session=request.getSession(false);
+	    	if(session==null){
+	    		session=request.getSession(true);
+	    		session.setAttribute("language","es");
+	    		sesionCaducada=true;
+	    	}
 	    	/*if(session.getAttribute("requestHelper")!=null){
 	    		reqHelper=(RequestHelper)session.getAttribute("requestHelper");
 	    		if(reqHelper==null){
@@ -81,13 +89,16 @@ public class ControlServlet extends HttpServlet {
 	    		reqHelper.setLang("es");
 	    	}
 	    	session.setAttribute("language", reqHelper.getLang());
-			tfandroidDAO tDao=new tfandroidDAO();
+	    	if(sesionCaducada){
+	    		reqHelper.setAction(0);
+	    	}
+	    	tfandroidDAO tDao=new tfandroidDAO();
 			reqHelper.setListaNewsCortas(tDao.consultaNoticiasCortas(reqHelper.getLang()));
 			reqHelper.setListaMarcas(tDao.consultaMarcas());
 			switch(reqHelper.getAction()){
 			case 0:
 				reqHelper.setListaInicio(tDao.consultarInicio(reqHelper.getLang()));
-				reqHelper.setJsp("/index.jsp");
+				reqHelper.setJsp("/inicio.jsp");
 				break;
 			case 1:
 
@@ -194,23 +205,21 @@ public class ControlServlet extends HttpServlet {
 								break;
 						}
 					     
-					      // Sender's email ID needs to be mentioned
-					      String from = request.getParameter("email");
-					      // Assuming you are sending email from localhost
-					      String host = "mail.tfandroid.es";
-					      // Get system properties
-					      Properties properties = System.getProperties();
-					      // Setup mail server
-					      properties.setProperty("mail.smtp.host", host);
-					      properties.setProperty("mail.user", "web@tfandroid.es");
-					      properties.setProperty("mail.password", "web1234");
-					      // Get the default Session object.
-					      Session ses = Session.getDefaultInstance(properties);
 					      try{
+					    	  Properties props = new Properties();
+						        props.put("mail.transport.protocol", "smtp");
+						        props.put("mail.smtp.host", "mail.tfandroid.es");
+						        props.put("mail.smtp.auth", "true");
+
+						        Authenticator auth = new SMTPAuthenticator();
+						        Session mailSession = Session.getDefaultInstance(props, auth);
+						        // uncomment for debugging infos to stdout
+						        // mailSession.setDebug(true);
+						        Transport transport = mailSession.getTransport();
 					         // Create a default MimeMessage object.
-					         MimeMessage message = new MimeMessage(ses);
+					         MimeMessage message = new MimeMessage(mailSession);
 					         // Set From: header field of the header.
-					         message.setFrom(new InternetAddress(from));
+					         message.setFrom(new InternetAddress("web@tfandroid.es"));
 					         // Set To: header field of the header.
 					         message.addRecipient(Message.RecipientType.TO,
 					                                  new InternetAddress(to));
@@ -221,7 +230,12 @@ public class ControlServlet extends HttpServlet {
 					         texto=texto+request.getParameter("message");
 					         message.setText(texto);
 					         // Send message
-					         Transport.send(message);
+
+
+						        transport.connect();
+						        transport.sendMessage(message,
+						            message.getRecipients(Message.RecipientType.TO));
+						        transport.close();
 					         error=0;
 					      }catch (MessagingException mex) {
 					         mex.printStackTrace();
@@ -248,7 +262,14 @@ public class ControlServlet extends HttpServlet {
 			e.printStackTrace();
 			reqHelper.setJsp("error.jsp");
 			response.sendRedirect(reqHelper.getJsp());
-		}      
-	}
+		}
+	} 
+	private class SMTPAuthenticator extends javax.mail.Authenticator {
+        public PasswordAuthentication getPasswordAuthentication() {
+            String username = "web@tfandroid.es";
+            String password = "tfdesarrollo.2015";
+            return new PasswordAuthentication(username, password);
+         }
+     }
 
 }

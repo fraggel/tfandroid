@@ -226,10 +226,13 @@ public class tfandroidDAO {
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
             conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and visible=1 and (lower(titulo) like ? or lower(intro) like ? or lower(changelog) like ? or lower(info) like ? or lower(features) like ?) order by fecha desc ");
 			calstm.setString(1, idioma);
-			calstm.setString(2,texto);
-			calstm.setString(3,texto);
+			calstm.setString(2,texto.toLowerCase());
+			calstm.setString(3,texto.toLowerCase());
+			calstm.setString(4,texto.toLowerCase());
+			calstm.setString(5,texto.toLowerCase());
+			calstm.setString(6,texto.toLowerCase());
 			ResultSet set=calstm.executeQuery();
 			listaDescargas=new ArrayList();
 			while(set.next()){
@@ -307,7 +310,7 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 order by fecha desc ");
+			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 and fecha >='2015-09-01 00:00:00' order by fecha desc ");
 			calstm.setString(1, idioma);
 			ResultSet set=calstm.executeQuery();
 			
@@ -336,7 +339,7 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
             conn = ds.getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,titulo,fecha,'',urlimagen,idioma,visible,marcaModelo from downloads where idioma= ? and visible=1 order by fecha desc ");
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,titulo,fecha,'',urlimagen,idioma,visible,marcaModelo from downloads where idioma= ? and visible=1 and fecha >='2015-09-01 00:00:00' order by fecha desc ");
 			calstm.setString(1, idioma);
 			ResultSet set=calstm.executeQuery();
 			int cont=0;

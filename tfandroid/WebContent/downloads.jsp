@@ -2,7 +2,7 @@
 <div id="containerLinea">
 <%Modelo modelo=(Modelo)reqHelper.getModeloActual(); %>
 <b><%=modelo.getTitulo() %></b><br/><hr/>
-<a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>"><%=RB.getString("home.back") %></a></b><br/><br/><br/>
+<b><a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>"><%=RB.getString("home.back") %></a></b><br/><br/><br/>
 <%for (int x=0;x<reqHelper.getListaDescargas().size();x++){
 	Download download=(Download)reqHelper.getListaDescargas().get(x);	
 %>

@@ -188,6 +188,8 @@ public String parseCampoFeatures(String campo){
 	String campoAux2="";
 	if(campo.length()>100){
 		campoAux2=campo.substring(0,100);
+	}else{
+		campoAux2=campo;
 	}
 	String campoAux="<ul><li><a>";
 	campoAux=campoAux+campoAux2.replaceAll("\n", "</a></li><li><a>");
