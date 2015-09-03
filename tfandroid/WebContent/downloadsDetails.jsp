@@ -3,9 +3,7 @@
 <%Download download=(Download)reqHelper.getDescargaActual();%>
 
 <b><%=download.getMarcaModelo() %></b><br/><hr/>
-<b><a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>&subDetalle=<%=reqHelper.getSubDetalle()%>"><%=RB.getString("home.back") %></a></b><br/><br/><br/>
-
-<br/><br/>
+<b><a href="ControlServlet?action=4&detalle=<%=reqHelper.getDetalle()%>&subDetalle=<%=reqHelper.getSubDetalle()%>"><%=RB.getString("home.back") %></a></b>
 <%if(download.getIntro()!=null){
 	if(!"".equals(download.getIntro().trim())){
 %>

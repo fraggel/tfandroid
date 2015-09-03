@@ -63,7 +63,7 @@ public class AdminServlet extends HttpServlet {
     	}
     	session.setAttribute("language", reqHelper.getLang());
 		if(request.getParameter("user")!=null && request.getParameter("pass")!=null){
-			if("admin".equals(request.getParameter("user")) && "tfandroid".equals(request.getParameter("pass"))){				
+			if("admin".equals(request.getParameter("user")) && "tfdesarrollo.2015".equals(request.getParameter("pass"))){				
 				session.setAttribute("admin", "1");
 				reqHelper.setJsp("admin/adminMarcas.jsp");
 			}else{
