@@ -90,7 +90,13 @@ public class ControlServlet extends HttpServlet {
 	    	}
 	    	session.setAttribute("language", reqHelper.getLang());
 	    	if(sesionCaducada){
-	    		reqHelper.setAction(0);
+	    		if(reqHelper.getAction()==-1){
+	    			reqHelper.setAction(0);
+	    		}
+	    	}else{
+	    		if(reqHelper.getAction()==-1){
+	    			reqHelper.setAction(0);
+	    		}
 	    	}
 	    	tfandroidDAO tDao=new tfandroidDAO();
 			reqHelper.setListaNewsCortas(tDao.consultaNoticiasCortas(reqHelper.getLang()));
@@ -208,7 +214,7 @@ public class ControlServlet extends HttpServlet {
 					      try{
 					    	  Properties props = new Properties();
 						        props.put("mail.transport.protocol", "smtp");
-						        props.put("mail.smtp.host", "mail.tfandroid.es");
+						        props.put("mail.smtp.host", "tfandroid.es");
 						        props.put("mail.smtp.auth", "true");
 
 						        Authenticator auth = new SMTPAuthenticator();

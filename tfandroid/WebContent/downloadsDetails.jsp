@@ -17,7 +17,7 @@
 <%if(download.getInfo()!=null && download.getFeatures()!=null){
 	if(!"".equals(download.getInfo().trim()) && !"".equals(download.getFeatures().trim())){
 %>
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/info<%=reqHelper.getLang() %>.png"/></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/info<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
 
 <div id="descarga">
 <div id="descargaInfo1" >
@@ -38,7 +38,7 @@
 	if(!"".equals(download.getChangelog().trim())){
 %>
 
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/changelog<%=reqHelper.getLang() %>.png"/></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/changelog<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
 <div id="descargaChangelog">
 <%=download.parseCampo(download.getChangelog()) %>
 </div>
@@ -48,7 +48,7 @@
 <%if(download.getFaq()!=null){
 	if(!"".equals(download.getFaq().trim())){
 %>
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/faq<%=reqHelper.getLang() %>.png"/></center>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/faq<%=reqHelper.getLang() %>.png"/></div></center>
 <div id="descargaChangelog">
 <%=download.parseCampoBR(download.getFaq()) %>
 </div>
@@ -58,7 +58,7 @@
 <%if(download.getInstall()!=null){
 	if(!"".equals(download.getInstall().trim())){
 %>
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/installation<%=reqHelper.getLang() %>.png"/></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/installation<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
 <div id="descargaChangelog">
 <%=download.parseCampo(download.getInstall()) %>
 </div>
@@ -69,7 +69,7 @@
 	if(!"".equals(download.getScreenshots1().trim()) && !"".equals(download.getScreenshots2().trim())){
 %>
 
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/screenshots<%=reqHelper.getLang() %>.png"/></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/screenshots<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
 <div id="descargaInfo3">
 <img src="<%=download.getScreenshots1()%>"/><br/><br/>
 <img src="<%=download.getScreenshots2()%>"/>
@@ -80,7 +80,7 @@
 <%if(download.getMega()!=null || download.getGdrive()!=null){
 	if(!"".equals(download.getMega().trim()) || !"".equals(download.getGdrive().trim())){
 %>
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/downloads<%=reqHelper.getLang() %>.png" /></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/downloads<%=reqHelper.getLang() %>.png" /></center><br/><br/>
 <%if(!"".equals(download.getMega().trim())){ %>
 <center><%=download.parseCampoMega(download.getMega()) %></center>
 <%}%>
@@ -91,7 +91,7 @@
 <br/>
 <br/>
 <%}} %>
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/visitus<%=reqHelper.getLang() %>.png"/></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/visitus<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
 
 <center><a href="www.tfandroid.es"><img src="http://www.tfandroid.es/images/logonuevo.png" height="50px"/></a>
 <a href="http://www.facebook.com/TFAndroidDevelopers" target="_blank"><img src="http://www.tfandroid.es/images/facebook.png" width="50px"/></a><a href="http://twitter.com/TFADevelopers" target="_blank"><img src="http://www.tfandroid.es/images/twiter.png" width="50px"/></a><a href="http://plus.google.com/103304683630993709928" target="_blank"><img src="http://www.tfandroid.es/images/googleplus.png" width="50px"/></a><a href="http://www.youtube.com/user/TeamForceGroup" target="_blank"><img src="http://www.tfandroid.es/images/youtube.png" width="50px"/></a></center>
@@ -100,10 +100,18 @@
 <%if(download.getCredits()!=null){
 	if(!"".equals(download.getCredits().trim())){
 %>
-<center><img id="imgSeparacion" src="http://www.tfandroid.es/images/downloads/credits<%=reqHelper.getLang() %>.png"/></center><br/><br/>
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/credits<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
 <div id="descargaChangelog">
 <%=download.parseCampo(download.getCredits()) %>
 </div>
+<br/>
+<br/>
+<%}} %>
+<%if(download.getForum_id()!=null && download.getTopic_id()!=null){
+	if(!"".equals(download.getForum_id().trim()) && !"".equals(download.getTopic_id().trim())){
+%>http://foro.tfandroid.es/viewtopic.php?f=19&t=3
+<center><div id="imgSeparacion"><img src="http://www.tfandroid.es/images/downloads/soporte<%=reqHelper.getLang() %>.png"/></div></center><br/><br/>
+<%=RB.getString("download.support") %> <a href="http://foro.tfandroid.es/viewtopic.php?f=<%=download.getForum_id() %>&t=<%=download.getTopic_id() %>" target="_blank"><%=RB.getString("download.supportlink") %></a>
 <br/>
 <br/>
 <%}} %>

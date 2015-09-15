@@ -102,10 +102,10 @@ public class AdminServlet extends HttpServlet {
 						reqHelper.setListaMarcas(aDao.consultaMarcas());
 						reqHelper.setListaModelos(aDao.consultaModelos());
 						if(request.getParameter("crear")!=null){
-							aDao.crearModelo(Integer.parseInt(request.getParameter("marca")),request.getParameter("nombre"),request.getParameter("urlimagen"),request.getParameter("visible"),request.getParameter("tfcpu"), request.getParameter("tfram"), request.getParameter("tflcd"), request.getParameter("tfcam"), request.getParameter("tfbat"));
+							aDao.crearModelo(Integer.parseInt(request.getParameter("marca")),request.getParameter("nombre"),request.getParameter("urlimagen"),request.getParameter("visible"),request.getParameter("tfcpu"), request.getParameter("tfram"), request.getParameter("tflcd"), request.getParameter("tfcam"), request.getParameter("tfbat"), request.getParameter("forum_id"));
 							reqHelper.setJsp("admin/adminModelos.jsp");
 						}else if(request.getParameter("modificar")!=null){
-							aDao.modificarModelo(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("urlimagen"),request.getParameter("tfcpu"), request.getParameter("tfram"), request.getParameter("tflcd"), request.getParameter("tfcam"), request.getParameter("tfbat"),request.getParameter("visible"));
+							aDao.modificarModelo(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("urlimagen"),request.getParameter("tfcpu"), request.getParameter("tfram"), request.getParameter("tflcd"), request.getParameter("tfcam"), request.getParameter("tfbat"),request.getParameter("visible"), request.getParameter("forum_id"));
 							reqHelper.setListaModelos(aDao.consultaModelo(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo"))));
 							reqHelper.setJsp("admin/adminModelosDetalle.jsp");
 						}else if(request.getParameter("borrar")!=null){
@@ -121,10 +121,10 @@ public class AdminServlet extends HttpServlet {
 					case 2:
 						reqHelper.setListaNews(aDao.consultaNoticias(reqHelper.getLang()));
 						if(request.getParameter("crear")!=null){
-							aDao.crearNoticia(request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
+							aDao.crearNoticia(request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),Boolean.parseBoolean(request.getParameter("altaForo")));
 							reqHelper.setJsp("admin/adminNoticias.jsp");
 						}else if(request.getParameter("modificar")!=null){
-							aDao.modificarNoticia(Integer.parseInt(request.getParameter("idnoticia")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),request.getParameter("fecha"));
+							aDao.modificarNoticia(Integer.parseInt(request.getParameter("idnoticia")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),Boolean.parseBoolean(request.getParameter("altaForo")),request.getParameter("fecha"));
 							reqHelper.setListaNews(aDao.consultaNoticia(Integer.parseInt(request.getParameter("idnoticia"))));
 							reqHelper.setJsp("admin/adminNoticiasDetalle.jsp");
 						}else if(request.getParameter("borrar")!=null){
@@ -197,7 +197,9 @@ public class AdminServlet extends HttpServlet {
 									Timestamp.valueOf(request.getParameter("fecha")),
 									request.getParameter("info"),
 									request.getParameter("features"),
-									request.getParameter("marcaModelo"));
+									request.getParameter("marcaModelo"),
+									request.getParameter("forum_id"),
+									request.getParameter("topic_id"));
 							reqHelper.setListaDescargas(aDao.consultaDescarga(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo")),Integer.parseInt(request.getParameter("iddownload"))));
 							reqHelper.setJsp("admin/adminDownloadsDetalle.jsp");
 						}else if(request.getParameter("borrar")!=null){

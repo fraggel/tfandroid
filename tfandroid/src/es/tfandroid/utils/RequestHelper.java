@@ -11,7 +11,7 @@ import es.tfandroid.beans.Modelo;
 import es.tfandroid.beans.News;
 
 public class RequestHelper {
-int action=0;
+int action=-1;
 int subaction=0;
 String lang=null;
 String jsp="about.jsp";

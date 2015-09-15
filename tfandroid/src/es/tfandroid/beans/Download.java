@@ -24,10 +24,12 @@ String info;
 String features;
 String marcaModelo;
 boolean visible;
+String forum_id;
+String topic_id;
 public Download(int iddescarga, int idmarca, int idmodelo, Timestamp fecha, String titulo, String intro,
 		String changelog, String faq, String install, String screenshots1, String screenshots2, String mega,
 		String gdrive, String credits, String urlimagen, String urlimagenPhone, String idioma, boolean visible, String info, String features,
-		String marcaModelo) {
+		String marcaModelo,String forum_id,String topic_id) {
 	super();
 	this.iddescarga = iddescarga;
 	this.idmarca = idmarca;
@@ -50,7 +52,36 @@ public Download(int iddescarga, int idmarca, int idmodelo, Timestamp fecha, Stri
 	this.features = features;
 	this.marcaModelo = marcaModelo;
 	this.visible = visible;
+	this.forum_id=forum_id;
+	this.topic_id=topic_id;
 }
+
+
+
+public String getForum_id() {
+	return forum_id;
+}
+
+
+
+public void setForum_id(String forum_id) {
+	this.forum_id = forum_id;
+}
+
+
+
+public String getTopic_id() {
+	return topic_id;
+}
+
+
+
+public void setTopic_id(String topic_id) {
+	this.topic_id = topic_id;
+}
+
+
+
 public String getUrlimagenPhone() {
 	return urlimagenPhone;
 }

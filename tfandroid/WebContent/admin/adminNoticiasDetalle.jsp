@@ -28,6 +28,8 @@ Título: <input type="text" name="titulo" value="<%=noticia.getTitulo()%>"/><br/>
 URL Imagen:<input type="text" name="urlimagen" value="<%=noticia.getUrl()%>" size="50"/><br/>
 Visible: <input type="text" name="visible" value="<%=noticia.isVisible()%>"/><br/>
 Descripción: <textarea name="descripcion" rows="30" cols="100"><%=noticia.getDescripcion() %></textarea><br/>
+Noticia Foro: <input type="text" name="noticiaForo" value="<%=noticia.isNoticiaForo()%>"/><br/>
+UrlForo: <input type="text" name="urlForo" value="<%=noticia.getUrlForo()%>"/><br/>
 <input type="submit" name="modificar" value="modificar"/><br/>
 </form>
 <br/><hr/>

@@ -10,9 +10,11 @@ Timestamp fecha;
 String url;
 String idioma;
 boolean visible;
+boolean noticiaForo;
+String urlForo;
 
 public News(int idnoticia, String titulo, Timestamp fecha,String descripcion,
-		String url,String idioma,boolean visible) {
+		String url,String idioma,boolean visible,boolean noticiaForo,String urlForo) {
 	super();
 	this.idnoticia = idnoticia;
 	this.titulo = titulo;
@@ -21,6 +23,24 @@ public News(int idnoticia, String titulo, Timestamp fecha,String descripcion,
 	this.url = url;
 	this.idioma=idioma;
 	this.visible=visible;
+	this.noticiaForo=noticiaForo;
+	this.urlForo=urlForo;
+}
+
+public boolean isNoticiaForo() {
+	return noticiaForo;
+}
+
+public void setNoticiaForo(boolean noticiaForo) {
+	this.noticiaForo = noticiaForo;
+}
+
+public String getUrlForo() {
+	return urlForo;
+}
+
+public void setUrlForo(String urlForo) {
+	this.urlForo = urlForo;
 }
 
 public boolean isVisible() {

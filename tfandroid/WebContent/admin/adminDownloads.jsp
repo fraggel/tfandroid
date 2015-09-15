@@ -42,7 +42,7 @@ Elige idioma:<select name="language">
 </form>
 <br/><br/><br/><br/><br/><br/>
 <table border="1" width="100%">
-<tr><td>Imagen</td><td>Fecha</td><td>Título</td><td>Marca/Modelo</td><td>Visible</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>Imagen</td><td>Fecha</td><td>Título</td><td>Marca/Modelo</td><td>Visible</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
 <%if(reqHelper.getListaDescargas()!=null){
 	for (int x=0;x<reqHelper.getListaDescargas().size();x++){
 	Download descarga=(Download)reqHelper.getListaDescargas().get(x);	

@@ -41,6 +41,7 @@ Visible <select name="visible">
 <option selected value="true">Si</option>
 <option value="false">No</option>
 </select><br/>
+Forum ID:<input type="text" name="forum_id"/><br/>
 CPU:<input type="text" name="tfcpu"/><br/>
 RAM:<input type="text" name="tfram"/><br/>
 PANTALLA:<input type="text" name="tflcd"/><br/>

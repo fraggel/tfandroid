@@ -31,12 +31,17 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
-<!-- <Resource name="jdbc/tfandroid" auth="Container" type="javax.sql.DataSource"
-               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-               username="datatecn_tfandro" password="tfandroid" driverClassName="com.mysql.jdbc.Driver"
-               url="jdbc:mysql://srv64.hosting24.com:3306/datatecn_tfandroid"/>-->
+
 <Resource name="jdbc/tfandroid" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
                username="tfandroi_tfandro" password="tfandroid" driverClassName="com.mysql.jdbc.Driver"
-               url="jdbc:mysql://localhost:3306/tfandroi_tfandroid"/>
+               url="jdbc:mysql://localhost:3306/tfandroi_tfandro"/>
+<Resource name="jdbc/tfandroidTest" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="tfandro_test" password="tfandro_test" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/tfandro_test"/>
+<Resource name="jdbc/tfandroidforo" auth="Container" type="javax.sql.DataSource"
+               maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+               username="tfandroi_phpbb" password="dataphpbb" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/tfandroi_phpbb"/>
 </Context>

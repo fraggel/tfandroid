@@ -13,10 +13,12 @@ public class Inicio {
 	String idioma;
 	String marcaModelo;
 	boolean visible;
+	boolean noticiaForo;
+	String urlForo;
 	
 	
 	public Inicio(int idprincipal, int idsecundario, int idterciario, String titulo,Timestamp fecha,String descripcion,  String urlimagen,
-			String idioma, boolean visible,String marcaModelo) {
+			String idioma, boolean visible,String marcaModelo,boolean noticiaForo,String urlForo) {
 		super();
 		this.idprincipal = idprincipal;
 		this.idsecundario = idsecundario;
@@ -28,8 +30,26 @@ public class Inicio {
 		this.visible = visible;
 		this.descripcion=descripcion;
 		this.marcaModelo=marcaModelo;
+		this.noticiaForo=noticiaForo;
+		this.urlForo=urlForo;
 	}
 	
+	public boolean isNoticiaForo() {
+		return noticiaForo;
+	}
+
+	public void setNoticiaForo(boolean noticiaForo) {
+		this.noticiaForo = noticiaForo;
+	}
+
+	public String getUrlForo() {
+		return urlForo;
+	}
+
+	public void setUrlForo(String urlForo) {
+		this.urlForo = urlForo;
+	}
+
 	public String getMarcaModelo() {
 		return marcaModelo;
 	}

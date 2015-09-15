@@ -40,7 +40,8 @@ Captura2: <textarea name="screenshots2" rows="30" cols="100"><%=descarga.getScre
 Enlace MEGA: <textarea name="mega" rows="30" cols="100"><%=descarga.getMega() %></textarea><br/><br/>
 Enlace GDRIVE: <textarea name="gdrive" rows="30" cols="100"><%=descarga.getGdrive() %></textarea><br/><br/>
 Créditos: <textarea name="credits" rows="30" cols="100"><%=descarga.getCredits() %></textarea><br/><br/>
-
+Forum_id: <input type="text" name="forum_id" value="<%=descarga.getForum_id()%>"/><br/><br/>
+Topic_id: <input type="text" name="topic_id" value="<%=descarga.getTopic_id()%>"/><br/><br/>
 Rom Info: <textarea name="info" rows="30" cols="100"><%=descarga.getInfo() %></textarea><br/><br/>
 Features Info: <textarea name="features" rows="30" cols="100"><%=descarga.getFeatures() %></textarea><br/><br/>
 <input type="submit" name="modificar" value="modificar"/><br/><br/>

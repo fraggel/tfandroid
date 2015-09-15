@@ -24,12 +24,13 @@ if(session.getAttribute("admin")!=null){
 <input type="hidden" name="idmodelo" value="<%=modelo.getIdmodelo()%>"/>
 Imagen: <img width="200px" src="<%=modelo.getUrlImagen()%>"/><br/>
 Título: <input type="text" name="titulo" value="<%=modelo.getTitulo()%>"/><br/>
+ForumID: <input type="text" name="forum_id" value="<%=modelo.getForum_id()%>"/><br/>
 URL Imagen: <input type="text" name="urlimagen" value="<%=modelo.getUrlImagen()%>" size="50"/><br/>
-CPU: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getCpu() %></textarea><br/>
-RAM: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getRam() %></textarea><br/>
-DISPLAY: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getDisplay() %></textarea><br/>
-CAMARA: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getCamara() %></textarea><br/>
-BATERIA: <textarea name="descripcion" rows="30" cols="100"><%=modelo.getBateria() %></textarea><br/>
+CPU: <textarea name="tfcpu" rows="30" cols="100"><%=modelo.getCpu() %></textarea><br/>
+RAM: <textarea name="tfram" rows="30" cols="100"><%=modelo.getRam() %></textarea><br/>
+DISPLAY: <textarea name="tflcd" rows="30" cols="100"><%=modelo.getDisplay() %></textarea><br/>
+CAMARA: <textarea name="tfcam" rows="30" cols="100"><%=modelo.getCamara() %></textarea><br/>
+BATERIA: <textarea name="tfbat" rows="30" cols="100"><%=modelo.getBateria() %></textarea><br/>
 Visible: <input type="text" name="visible" value="<%=modelo.isVisible()%>"/><br/>
 <input type="submit" name="modificar" value="modificar"/></form>
 <br/><hr/>

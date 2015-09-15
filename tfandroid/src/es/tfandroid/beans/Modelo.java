@@ -11,8 +11,9 @@ public class Modelo {
 	String camara;
 	String bateria;
 	boolean visible;
+	String forum_id;
 	public Modelo(int idmarca, int idmodelo, String titulo, String urlImagen, String cpu, String ram, String display,
-			String camara, String bateria, boolean visible) {
+			String camara, String bateria, boolean visible,String forum_id) {
 		super();
 		this.idmarca = idmarca;
 		this.idmodelo = idmodelo;
@@ -24,7 +25,17 @@ public class Modelo {
 		this.camara = camara;
 		this.bateria = bateria;
 		this.visible = visible;
+		this.forum_id=forum_id;
 	}
+	
+	public String getForum_id() {
+		return forum_id;
+	}
+
+	public void setForum_id(String forum_id) {
+		this.forum_id = forum_id;
+	}
+
 	public int getIdmarca() {
 		return idmarca;
 	}

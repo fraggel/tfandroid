@@ -17,6 +17,7 @@ import es.tfandroid.beans.Inicio;
 import es.tfandroid.beans.Marca;
 import es.tfandroid.beans.Modelo;
 import es.tfandroid.beans.News;
+import es.tfandroid.utils.Constantes;
 
 
 public class tfandroidDAO {
@@ -27,15 +28,15 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 order by fecha desc ");
+			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible,noticiaForo,urlForo from noticias where idioma= ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
 			ResultSet set=calstm.executeQuery();
 			listaNoticias=new ArrayList();
 			int cont=0;
 			while(set.next()){
-				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7));
+				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7),set.getBoolean(8),set.getString(9));
 				listaNoticias.add(noticia);
 				cont++;
 				if(cont==5){
@@ -44,6 +45,7 @@ public class tfandroidDAO {
 			}
 			conn.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			if(conn!=null){
 				try {
 					conn.close();
@@ -60,13 +62,13 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-            conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 order by fecha desc ");
+            conn = ((DataSource)(ctx.lookup(Constantes.jndi))).getConnection();
+            CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible,noticiaForo,urlForo from noticias where idioma= ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
 			ResultSet set=calstm.executeQuery();
 			listaNoticias=new ArrayList();
 			while(set.next()){
-				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7));
+				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7),set.getBoolean(8),set.getString(9));
 				listaNoticias.add(noticia);
 			}
 			conn.close();
@@ -88,8 +90,8 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-            conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and idmarca = ? and idmodelo= ? and visible=1 order by fecha desc ");
+            conn = ((DataSource)(ctx.lookup(Constantes.jndi))).getConnection();
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo,forum_id,topic_id from downloads where idioma= ? and idmarca = ? and idmodelo= ? and visible=1 order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setInt(2,marca);
 			calstm.setInt(3,modelo);
@@ -116,7 +118,9 @@ public class tfandroidDAO {
 												set.getBoolean(18),
 												set.getString(19),
 												set.getString(20),
-												set.getString(21));
+												set.getString(21),
+												set.getString(22),
+												set.getString(23));
 				listaDescargas.add(descarga);
 			}
 			conn.close();
@@ -137,7 +141,7 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
 			CallableStatement calstm=conn.prepareCall("select idmarca,titulo,urlimagen,descripcion,visible from marca where visible=1 order by idmarca asc ");
 			ResultSet set=calstm.executeQuery();
@@ -164,14 +168,14 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible from modelo where visible=1 order by idmodelo asc ");
+			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where visible=1 order by idmodelo asc ");
 			ResultSet set=calstm.executeQuery();
 			listaModelos=new ArrayList();
 			int cont=0;
 			while(set.next()){
-				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10));
+				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10),set.getString(11));
 				listaModelos.add(modelo);
 				cont++;
 			}
@@ -193,15 +197,15 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible from modelo where idmarca = ? and visible=1 order by idmodelo asc ");
+			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where idmarca = ? and visible=1 order by idmodelo asc ");
 			calstm.setInt(1, idmarca);
 			ResultSet set=calstm.executeQuery();
 			listaModelos=new ArrayList();
 			int cont=0;
 			while(set.next()){
-				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10));
+				Modelo modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10),set.getString(11));
 				listaModelos.add(modelo);
 				cont++;
 			}
@@ -223,10 +227,10 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-            conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo from downloads where idioma= ? and visible=1 and (lower(titulo) like ? or lower(intro) like ? or lower(changelog) like ? or lower(info) like ? or lower(features) like ?) order by fecha desc ");
+            conn = ((DataSource)(ctx.lookup(Constantes.jndi))).getConnection();
+            CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,fecha,titulo,intro,changelog,faq,install,screenshots1,screenshots2,mega,gdrive,credits,urlimagen,urlimagenphone,idioma,visible,info,features,marcaModelo,forum_id,topic_id from downloads where idioma= ? and visible=1 and (lower(titulo) like ? or lower(intro) like ? or lower(changelog) like ? or lower(info) like ? or lower(features) like ?) order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setString(2,texto.toLowerCase());
 			calstm.setString(3,texto.toLowerCase());
@@ -256,7 +260,9 @@ public class tfandroidDAO {
 													set.getBoolean(18),
 													set.getString(19),
 													set.getString(20),
-													set.getString(21));
+													set.getString(21),
+													set.getString(22),
+													set.getString(23));
 				listaDescargas.add(descarga);
 			}
 			conn.close();
@@ -277,17 +283,17 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-            conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-            CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
+            conn = ((DataSource)(ctx.lookup(Constantes.jndi))).getConnection();
+            CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible,noticiaForo,urlForo from noticias where idioma= ? and visible=1 and (titulo like ? or descripcion like ?) order by fecha desc ");
 			calstm.setString(1, idioma);
 			calstm.setString(2,texto);
 			calstm.setString(3,texto);
 			ResultSet set=calstm.executeQuery();
 			listaNews=new ArrayList();
 			while(set.next()){
-				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7));
+				News noticia=new News(set.getInt(1),set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7),set.getBoolean(8),set.getString(9));
 				listaNews.add(noticia);
 			}
 			conn.close();
@@ -308,15 +314,15 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible from noticias where idioma= ? and visible=1 and fecha >='2015-09-01 00:00:00' order by fecha desc ");
+			CallableStatement calstm=conn.prepareCall("select idnoticia,titulo,fecha,descripcion,urlimagen,idioma,visible,noticiaForo,urlForo from noticias where idioma= ? and visible=1 and fecha >='2015-09-01 00:00:00' order by fecha desc ");
 			calstm.setString(1, idioma);
 			ResultSet set=calstm.executeQuery();
 			
 			int cont=0;
 			while(set.next()){
-				Inicio noticia=new Inicio(set.getInt(1),-1,-1,set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7),"");
+				Inicio noticia=new Inicio(set.getInt(1),-1,-1,set.getString(2),set.getTimestamp(3),set.getString(4),set.getString(5),set.getString(6),set.getBoolean(7),"",set.getBoolean(8),set.getString(9));
 				listaConjunta.add(noticia);
 				cont++;
 				if(cont==10){
@@ -337,7 +343,7 @@ public class tfandroidDAO {
 		try {
 			Context initialContext = new InitialContext();
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
-			DataSource ds= (DataSource)(ctx.lookup("jdbc/tfandroid"));
+			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
             CallableStatement calstm=conn.prepareCall("select iddownload,idmarca,idmodelo,titulo,fecha,'',urlimagen,idioma,visible,marcaModelo from downloads where idioma= ? and visible=1 and fecha >='2015-09-01 00:00:00' order by fecha desc ");
 			calstm.setString(1, idioma);
@@ -345,7 +351,7 @@ public class tfandroidDAO {
 			int cont=0;
 			while(set.next()){
 				
-				Inicio descarga=new Inicio(set.getInt(1),set.getInt(2),set.getInt(3),set.getString(4),set.getTimestamp(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10));
+				Inicio descarga=new Inicio(set.getInt(1),set.getInt(2),set.getInt(3),set.getString(4),set.getTimestamp(5),set.getString(6),set.getString(7),set.getString(8),set.getBoolean(9),set.getString(10),false,"");
 				listaConjunta.add(descarga);
 				cont++;
 				if(cont==10){
@@ -377,13 +383,13 @@ public class tfandroidDAO {
 			try {
 				Context initialContext = new InitialContext();
 				Context ctx=(Context)initialContext.lookup("java:comp/env");
-	            conn = ((DataSource)(ctx.lookup("jdbc/tfandroid"))).getConnection();
-	            CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible from modelo where idmarca=? and idmodelo=? order by idmodelo asc ");
+	            conn = ((DataSource)(ctx.lookup(Constantes.jndi))).getConnection();
+	            CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where idmarca=? and idmodelo=? order by idmodelo asc ");
 				calstm.setInt(1, detalle);
 				calstm.setInt(2, subDetalle);
 	            ResultSet set=calstm.executeQuery();
 				while(set.next()){
-					modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10));
+					modelo=new Modelo(set.getInt(1),set.getInt(2),set.getString(3),set.getString(4),set.getString(5),set.getString(6),set.getString(7),set.getString(8),set.getString(9),set.getBoolean(10),set.getString(11));
 				}
 				conn.close();
 			} catch (Exception e) {

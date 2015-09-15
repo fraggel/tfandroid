@@ -123,14 +123,14 @@ if(reqHelper.getTipoDevice()!=null){
 				<div id="hr"><hr/></div>
 				<div id="superior">
 				<div id="banner">
-				<center><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><br/></center>
+				<center><a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a><br/></center>
 				</div>
 				</div>
 				<div id="hr"><hr/></div>
 <%}else{%>
 	<div id="hr"><hr/></div>
 	<div id="banner">
-	<img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/>
+	<<a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a><a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a><a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a>
 	</div>
 	<div id="hr"><hr/></div>
 	
