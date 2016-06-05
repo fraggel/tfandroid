@@ -144,7 +144,7 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmarca,titulo,urlimagen,descripcion,visible from marca where visible=1 order by idmarca asc ");
+			CallableStatement calstm=conn.prepareCall("select idmarca,titulo,urlimagen,descripcion,visible from marca where visible=1 order by orden asc ");
 			ResultSet set=calstm.executeQuery();
 			listaMarcas=new ArrayList();
 			while(set.next()){
@@ -198,7 +198,7 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where visible=1 order by idmodelo asc ");
+			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where visible=1 order by orden asc ");
 			ResultSet set=calstm.executeQuery();
 			listaModelos=new ArrayList();
 			int cont=0;
@@ -227,7 +227,7 @@ public class tfandroidDAO {
 			Context ctx=(Context)initialContext.lookup("java:comp/env");
 			DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
             conn = ds.getConnection();
-			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where idmarca = ? and visible=1 order by idmodelo asc ");
+			CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where idmarca = ? and visible=1 order by orden asc");
 			calstm.setInt(1, idmarca);
 			ResultSet set=calstm.executeQuery();
 			listaModelos=new ArrayList();
@@ -412,7 +412,7 @@ public class tfandroidDAO {
 				Context initialContext = new InitialContext();
 				Context ctx=(Context)initialContext.lookup("java:comp/env");
 	            conn = ((DataSource)(ctx.lookup(Constantes.jndi))).getConnection();
-	            CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where idmarca=? and idmodelo=? order by idmodelo asc ");
+	            CallableStatement calstm=conn.prepareCall("select idmodelo,idmarca,titulo,urlimagen,cpu,ram,display,camara,bateria,visible,forum_id from modelo where idmarca=? and idmodelo=? order by orden asc ");
 				calstm.setInt(1, detalle);
 				calstm.setInt(2, subDetalle);
 	            ResultSet set=calstm.executeQuery();
