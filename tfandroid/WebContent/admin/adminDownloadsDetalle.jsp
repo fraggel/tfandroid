@@ -23,6 +23,7 @@ for (int xxx=0;xxx<reqHelper.getListaDescargas().size();xxx++){
 <input type="hidden" name="iddownload" value="<%=descarga.getIddescarga()%>"/>
 <input type="hidden" name="idmarca" value="<%=descarga.getIdmarca()%>"/>
 <input type="hidden" name="idmodelo" value="<%=descarga.getIdmodelo()%>"/>
+
 Imagen: <img width="200px" src="<%=descarga.getUrlimagen()%>"/><br/><br/>
 Fecha: <input type="text" name="fecha" value="<%=descarga.getFecha()%>"/><br/><br/>
 Idioma: <input type="text" name="idioma" value="<%=descarga.getIdioma()%>"/><br/><br/>

@@ -25,12 +25,14 @@ Marca companyActual=null;
 String txtSearch=null;
 String tipoDevice=null;
 ArrayList listaDescargas=null;
+ArrayList listaBanners=null;
 ArrayList listaNews=null;
 ArrayList listaNewsCortas=null;
 ArrayList listaSearchs=null;
 ArrayList listaMarcas=null;
 ArrayList listaModelos=null;
 ArrayList listaInicio=null;
+Exception e=null;
 public RequestHelper() {
 	// TODO Auto-generated constructor stub
 }
@@ -94,6 +96,12 @@ public void tratarRequest(HttpServletRequest request) {
 	}
 }
 
+public Exception getE() {
+    return e;
+}
+public void setE(Exception e) {
+    this.e = e;
+}
 public Modelo getModeloActual() {
 	return modeloActual;
 }
@@ -173,6 +181,12 @@ public void setListaNewsCortas(ArrayList listaNewsCortas) {
 	this.listaNewsCortas = listaNewsCortas;
 }
 
+public ArrayList getListaBanners() {
+    return listaBanners;
+}
+public void setListaBanners(ArrayList listaBanners) {
+    this.listaBanners = listaBanners;
+}
 public ArrayList getListaDescargas() {
 	return listaDescargas;
 }
@@ -216,6 +230,5 @@ public String getLang() {
 public void setLang(String lang) {
 	this.lang = lang;
 }
-
 
 }

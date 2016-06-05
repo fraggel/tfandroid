@@ -44,6 +44,7 @@ Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
 %>
 <tr>
 <form action="AdminServlet" method="post">
+	<input type="hidden" name="action" value="0"/>
 	<input type="hidden" name="subaction" value="1"/>
 	<input type="hidden" name="idmarca" value="<%=marca.getIdmarca()%>"/>
 	<td><img width="200px" src="<%=marca.getUrlImagen()%>"/></td>

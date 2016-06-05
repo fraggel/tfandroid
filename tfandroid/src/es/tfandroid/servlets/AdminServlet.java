@@ -63,7 +63,7 @@ public class AdminServlet extends HttpServlet {
     	}
     	session.setAttribute("language", reqHelper.getLang());
 		if(request.getParameter("user")!=null && request.getParameter("pass")!=null){
-			if("admin".equals(request.getParameter("user")) && "tfdesarrollo.2015".equals(request.getParameter("pass"))){				
+			if("admin".equals(request.getParameter("user")) && "caligula.2015".equals(request.getParameter("pass"))){				
 				session.setAttribute("admin", "1");
 				reqHelper.setJsp("admin/adminMarcas.jsp");
 			}else{
@@ -79,22 +79,26 @@ public class AdminServlet extends HttpServlet {
 					
 					switch(reqHelper.getAction()){
 					case 0:
-						reqHelper.setListaMarcas(aDao.consultaMarcas());
+
 							if(request.getParameter("crear")!=null){
 								aDao.crearMarca(request.getParameter("titulo"),request.getParameter("urlimagen"),request.getParameter("descripcion"),request.getParameter("visible"));
 								reqHelper.setJsp("admin/adminMarcas.jsp");
+								reqHelper.setListaMarcas(aDao.consultaMarcas());
 							}else if(request.getParameter("modificar")!=null){
 								aDao.modificarMarca(request.getParameter("idmarca"),request.getParameter("titulo"),request.getParameter("urlimagen"),request.getParameter("descripcion"),request.getParameter("visible"));
 								reqHelper.setListaMarcas(aDao.consultaMarca(Integer.parseInt(request.getParameter("idmarca"))));
 								reqHelper.setJsp("admin/adminMarcasDetalle.jsp");
+								reqHelper.setListaMarcas(aDao.consultaMarcas());
 							}else if(request.getParameter("borrar")!=null){
 								aDao.borrarMarca(request.getParameter("idmarca"));
 								reqHelper.setJsp("admin/adminMarcas.jsp");
+								reqHelper.setListaMarcas(aDao.consultaMarcas());
 							}else if(request.getParameter("modificarMain")!=null){
 								reqHelper.setListaMarcas(aDao.consultaMarca(Integer.parseInt(request.getParameter("idmarca"))));
 								reqHelper.setJsp("admin/adminMarcasDetalle.jsp");
 							}else{
 								reqHelper.setJsp("admin/adminMarcas.jsp");
+		                        reqHelper.setListaMarcas(aDao.consultaMarcas());
 							}
 						
 						break;
@@ -104,6 +108,8 @@ public class AdminServlet extends HttpServlet {
 						if(request.getParameter("crear")!=null){
 							aDao.crearModelo(Integer.parseInt(request.getParameter("marca")),request.getParameter("nombre"),request.getParameter("urlimagen"),request.getParameter("visible"),request.getParameter("tfcpu"), request.getParameter("tfram"), request.getParameter("tflcd"), request.getParameter("tfcam"), request.getParameter("tfbat"), request.getParameter("forum_id"));
 							reqHelper.setJsp("admin/adminModelos.jsp");
+							reqHelper.setListaMarcas(aDao.consultaMarcas());
+	                        reqHelper.setListaModelos(aDao.consultaModelos());
 						}else if(request.getParameter("modificar")!=null){
 							aDao.modificarModelo(request.getParameter("idmarca"),request.getParameter("idmodelo"),request.getParameter("titulo"),request.getParameter("urlimagen"),request.getParameter("tfcpu"), request.getParameter("tfram"), request.getParameter("tflcd"), request.getParameter("tfcam"), request.getParameter("tfbat"),request.getParameter("visible"), request.getParameter("forum_id"));
 							reqHelper.setListaModelos(aDao.consultaModelo(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo"))));
@@ -111,11 +117,17 @@ public class AdminServlet extends HttpServlet {
 						}else if(request.getParameter("borrar")!=null){
 							aDao.borrarModelo(request.getParameter("idmarca"),request.getParameter("idmodelo"));
 							reqHelper.setJsp("admin/adminModelos.jsp");
+							reqHelper.setListaMarcas(aDao.consultaMarcas());
+	                        reqHelper.setListaModelos(aDao.consultaModelos());
 						}else if(request.getParameter("modificarMain")!=null){
 							reqHelper.setListaModelos(aDao.consultaModelo(Integer.parseInt(request.getParameter("idmarca")),Integer.parseInt(request.getParameter("idmodelo"))));
 							reqHelper.setJsp("admin/adminModelosDetalle.jsp");
+							reqHelper.setListaMarcas(aDao.consultaMarcas());
+	                        reqHelper.setListaModelos(aDao.consultaModelos());
 						}else{
 							reqHelper.setJsp("admin/adminModelos.jsp");
+							reqHelper.setListaMarcas(aDao.consultaMarcas());
+	                        reqHelper.setListaModelos(aDao.consultaModelos());
 						}
 						break;
 					case 2:
@@ -123,6 +135,7 @@ public class AdminServlet extends HttpServlet {
 						if(request.getParameter("crear")!=null){
 							aDao.crearNoticia(request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),Boolean.parseBoolean(request.getParameter("altaForo")));
 							reqHelper.setJsp("admin/adminNoticias.jsp");
+							reqHelper.setListaNews(aDao.consultaNoticias(reqHelper.getLang()));
 						}else if(request.getParameter("modificar")!=null){
 							aDao.modificarNoticia(Integer.parseInt(request.getParameter("idnoticia")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")),Boolean.parseBoolean(request.getParameter("altaForo")),request.getParameter("fecha"));
 							reqHelper.setListaNews(aDao.consultaNoticia(Integer.parseInt(request.getParameter("idnoticia"))));
@@ -130,26 +143,30 @@ public class AdminServlet extends HttpServlet {
 						}else if(request.getParameter("borrar")!=null){
 							aDao.borrarNoticia(request.getParameter("idnoticia"),request.getParameter("idioma"));
 							reqHelper.setJsp("admin/adminNoticias.jsp");
+							reqHelper.setListaNews(aDao.consultaNoticias(reqHelper.getLang()));
 						}else if(request.getParameter("modificarMain")!=null){
 							reqHelper.setListaNews(aDao.consultaNoticia(Integer.parseInt(request.getParameter("idnoticia"))));
 							reqHelper.setJsp("admin/adminNoticiasDetalle.jsp");
+							reqHelper.setListaNews(aDao.consultaNoticias(reqHelper.getLang()));
 						}else if(request.getParameter("cambiaIdioma")!=null){
 							reqHelper.setJsp("admin/adminNoticias.jsp");
+							reqHelper.setListaNews(aDao.consultaNoticias(reqHelper.getLang()));
 						}else{
 							reqHelper.setJsp("admin/adminNoticias.jsp");
+							reqHelper.setListaNews(aDao.consultaNoticias(reqHelper.getLang()));
 						}
 						
 						
 						break;
 					case 3:
 						if(request.getParameter("crear")!=null){
-							//aDao.crearBanner(request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
+							//aDao.crearBanner(request.getParameter("idbanner"),request.getParameter("urlimagen"),request.getParameter("urldestino"));
 						}else if(request.getParameter("modificar")!=null){
-							//aDao.modificarBanner(Integer.parseInt(request.getParameter("idnoticia")),request.getParameter("titulo"),request.getParameter("descripcion"),request.getParameter("urlimagen"),request.getParameter("idioma"),Boolean.parseBoolean(request.getParameter("visible")));
+							//aDao.modificarBanner(Integer.parseInt(request.getParameter("idbanner")),request.getParameter("urlimagen"),request.getParameter("urldestino"));
 						}else if(request.getParameter("borrar")!=null){
-							//aDao.borrarModelo(request.getParameter("idmarca"),request.getParameter("idmodelo"));
+							//aDao.borrarBanner(Integer.parseInt(request.getParameter("idbanner")));
 						}
-						
+						reqHelper.setListaBanners(aDao.consultaBanners());
 						reqHelper.setJsp("admin/adminBanners.jsp");
 						break;
 					case 4:
@@ -220,12 +237,14 @@ public class AdminServlet extends HttpServlet {
 					}
 					
 			    	}
-			    	
-			    	request.setAttribute("requestHelper",reqHelper);
-					RequestDispatcher rqDis=request.getRequestDispatcher(reqHelper.getJsp());
-					rqDis.forward(request, response);
+
 				}catch(Exception e){
-					e.printStackTrace();
+					reqHelper.setJsp("error.jsp");
+					reqHelper.setE(e);
+				}finally{
+				    request.setAttribute("requestHelper",reqHelper);
+                    RequestDispatcher rqDis=request.getRequestDispatcher(reqHelper.getJsp());
+                    rqDis.forward(request, response);
 				}
 						
 			}

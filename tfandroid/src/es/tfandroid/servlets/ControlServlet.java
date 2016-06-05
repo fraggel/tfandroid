@@ -101,6 +101,7 @@ public class ControlServlet extends HttpServlet {
 	    	tfandroidDAO tDao=new tfandroidDAO();
 			reqHelper.setListaNewsCortas(tDao.consultaNoticiasCortas(reqHelper.getLang()));
 			reqHelper.setListaMarcas(tDao.consultaMarcas());
+			reqHelper.setListaBanners(tDao.consultaBanners());
 			switch(reqHelper.getAction()){
 			case 0:
 				reqHelper.setListaInicio(tDao.consultarInicio(reqHelper.getLang()));

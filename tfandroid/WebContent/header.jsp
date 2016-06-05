@@ -130,7 +130,11 @@ if(reqHelper.getTipoDevice()!=null){
 <%}else{%>
 	<div id="hr"><hr/></div>
 	<div id="banner">
-	<<a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a><a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a><a href="http://www.jiayu.es" target="_new"><img src="http://www.tfandroid.es/images/banners/d83a_jiayu-aplica9.gif"/></a>
+	<%for (int x=0;x<reqHelper.getListaBanners().size();x++){
+	    Banner banner=(Banner)reqHelper.getListaBanners().get(x);	
+%>
+	<a href="<%=banner.getUrlDestino() %>" target="_new"><img src="<%=banner.getUrlImagen() %>"/></a>
+	<%} %>
 	</div>
 	<div id="hr"><hr/></div>
 	

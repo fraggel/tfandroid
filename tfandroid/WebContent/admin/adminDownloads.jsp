@@ -54,6 +54,7 @@ Elige idioma:<select name="language">
 <input type="hidden" name="iddownload" value="<%=descarga.getIddescarga()%>"/>
 <input type="hidden" name="idmarca" value="<%=descarga.getIdmarca()%>"/>
 <input type="hidden" name="idmodelo" value="<%=descarga.getIdmodelo()%>"/>
+<input type="hidden" name="idioma" value="<%=descarga.getIdioma()%>"/>
 <td><img width="200px" src="<%=descarga.getUrlimagen()%>"/></td>
 <td><%=descarga.getFecha()%></td>
 <td><%=descarga.getTitulo()%></td>

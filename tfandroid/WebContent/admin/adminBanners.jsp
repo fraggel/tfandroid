@@ -21,20 +21,19 @@ Crear Banner<br/>
 <form action="AdminServlet" method="post">
 <input type="hidden" name="action" value="3"/>
 <input type="hidden" name="subaction" value="1"/>
-Titulo:<input type="text" name="titulo"/><br/>
-Descripcion:<textarea name="descripcion" rows="30" cols="100"></textarea><br/>
+Url Destino:<input type="text" name="urldestino"/><br/>
 Url Imagen:<input type="text" name="urlimagen"/><br/>
-Idioma:<select name="idioma">
-<option selected value="es">Español</option>
-<option value="en">Ingles</option>
-</select><br/>
-Visible <select name="visible">
-<option selected value="true">Si</option>
-<option value="false">No</option>
-</select><br/><br/>
+<br/>
 <input type="submit"/><br/>
 </form>
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/>
+<%for (int x=0;x<reqHelper.getListaBanners().size();x++){
+    Banner banner=(Banner)reqHelper.getListaBanners().get(x);	
+%>
+Url Destino:<input type="text" name="urldestino" value="<%=banner.getUrlDestino()%>"/><br/>
+Url Imagen:<input type="text" name="urlimagen" value="<%=banner.getUrlImagen()%>" size="100"/><br/>
+<%} %>
+<br/><br/><br/>
 <%}%>
 <%} %>
 </div>

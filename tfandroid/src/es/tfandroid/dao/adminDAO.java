@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import es.tfandroid.beans.Banner;
 import es.tfandroid.beans.Download;
 import es.tfandroid.beans.Marca;
 import es.tfandroid.beans.Modelo;
@@ -521,7 +522,6 @@ public class adminDAO {
 			calstm.setString(24, idioma);
 			calstm.setInt(25, iddownload);
 			calstm.executeUpdate();
-			
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -536,7 +536,7 @@ public class adminDAO {
 		return ret;
 		
 	}
-	public boolean borrarDescarga(String idmarca,String idmodelo,String iddownload,String idioma){
+	public boolean borrarDescarga(String idmarca,String idmodelo,String iddownload,String idioma) throws Exception{
 		ArrayList listaNoticias=null;
 		Connection conn =null;
 		boolean ret=true;
@@ -553,7 +553,7 @@ public class adminDAO {
 			
 			conn.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			if(conn!=null){
 				try {
 					conn.close();
@@ -561,6 +561,7 @@ public class adminDAO {
 					// TODO: handle exception
 				}
 			}
+			throw e;
 		}
 		return ret;
 	}
@@ -835,6 +836,34 @@ public class adminDAO {
 		}
 		return listaMarcas;
 	}
+	public ArrayList consultaBanners(){
+        ArrayList listaBanners=null;
+        Connection conn =null;
+        try {
+            Context initialContext = new InitialContext();
+            Context ctx=(Context)initialContext.lookup("java:comp/env");
+            DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
+            conn = ds.getConnection();
+            CallableStatement calstm=conn.prepareCall("select idbanner,urlimagen,urldestino from banners order by idbanner asc ");
+            ResultSet set=calstm.executeQuery();
+            listaBanners=new ArrayList();
+            while(set.next()){
+                Banner banner=new Banner(set.getInt(1),set.getString(2),set.getString(3));
+                listaBanners.add(banner);
+            }
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(conn!=null){
+                try {
+                    conn.close();
+                } catch (Exception e2) {
+                    // TODO: handle exception
+                }
+            }
+        }
+        return listaBanners;
+    }
 	public ArrayList consultaModelos(){
 		ArrayList listaModelos=null;
 		Connection conn =null;

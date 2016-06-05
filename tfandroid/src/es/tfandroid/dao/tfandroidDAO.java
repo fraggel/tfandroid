@@ -12,6 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import es.tfandroid.beans.Banner;
 import es.tfandroid.beans.Download;
 import es.tfandroid.beans.Inicio;
 import es.tfandroid.beans.Marca;
@@ -162,6 +163,33 @@ public class tfandroidDAO {
 		}
 		return listaMarcas;
 	}
+	public ArrayList consultaBanners(){
+        ArrayList listaBanners=null;
+        Connection conn =null;
+        try {
+            Context initialContext = new InitialContext();
+            Context ctx=(Context)initialContext.lookup("java:comp/env");
+            DataSource ds= (DataSource)(ctx.lookup(Constantes.jndi));
+            conn = ds.getConnection();
+            CallableStatement calstm=conn.prepareCall("select idbanner,urlimagen,urldestino from banners order by idbanner asc ");
+            ResultSet set=calstm.executeQuery();
+            listaBanners=new ArrayList();
+            while(set.next()){
+                Banner banner=new Banner(set.getInt(1),set.getString(2),set.getString(3));
+                listaBanners.add(banner);
+            }
+            conn.close();
+        } catch (Exception e) {
+            if(conn!=null){
+                try {
+                    conn.close();
+                } catch (Exception e2) {
+                    // TODO: handle exception
+                }
+            }
+        }
+        return listaBanners;
+    }
 	public ArrayList consultaModelos(){
 		ArrayList listaModelos=null;
 		Connection conn =null;
